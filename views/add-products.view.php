@@ -1,5 +1,5 @@
 <?php require 'partials/head.php'; ?>
- 
+
 <main>
     <div class="max-w-7xl mx-auto py-4 sm:px-6 lg:px-8">
         <div class="px-4 py-2 sm:px-0">
@@ -30,7 +30,7 @@
                                         <div class="grid grid-cols-6 gap-6">
                                             <div class="col-span-6 sm:col-span-6 lg:col-span-3">
                                                 <label for="product-price" class="block text-sm font-medium text-gray-700">Product Price</label>
-                                                <input type="text" name="product-price" id="product-price" class="mt-1 py-2 px-4  focus:ring-blue-500 focus:border-blue-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md"placeholder="How much are you willing to sell?">
+                                                <input type="text" name="product-price" id="product-price" class="mt-1 py-2 px-4  focus:ring-blue-500 focus:border-blue-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" placeholder="How much are you willing to sell?">
                                             </div>
 
                                             <div class="col-span-6 sm:col-span-3 lg:col-span-3">
@@ -50,10 +50,10 @@
                                             <div class="mt-1">
                                                 <textarea id="product-decsription" name="product-description" rows="3" class="shadow-md focus:ring-blue-500 focus:border-blue-500 py-2 px-4 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Say more product-decsription your product"></textarea>
                                             </div>
-                                            <input type="hidden" name="seller_id" class="hidden" value="<?=$_SESSION['id'];?>">
-                                            <input type="hidden" name="updatedAt" class="hidden" value="<?=date("Y-m-d H:i:s");?>">
+                                            <input type="hidden" name="seller_id" class="hidden" value="<?= $_SESSION['id']; ?>">
+                                            <input type="hidden" name="updatedAt" class="hidden" value="<?= date("Y-m-d H:i:s"); ?>">
 
-                                            
+
                                         </div>
 
 
@@ -69,9 +69,11 @@
                                                     <div class="flex text-sm text-gray-600">
                                                         <label for="product-image" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
                                                             <span>Upload a file</span>
-                                                            <input id="product-image" name="product-image" type="file" class="sr-only">
+                                                            <input type="file" class="sr-only" id="product-image" placeholder="Upload a file" name="product-image">
+                                                            
                                                         </label>
-                                                        <p class="pl-1">or drag and drop</p>
+                                                         
+                                                     
                                                     </div>
                                                     <p class="text-xs text-gray-500">
                                                         PNG, JPG, GIF up to 10MB
@@ -103,7 +105,7 @@
         </div>
     </div>
 </main>
- 
+
 </body>
 
 </html>

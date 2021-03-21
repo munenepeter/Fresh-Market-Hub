@@ -21,3 +21,13 @@ $router->post('register', 'AuthController@registerstore');
 $router->post('login', 'AuthController@loginstore');
 $router->post('upload', 'AuthController@upload');
 $router->post('addproduct', 'ProductsController@addProductsStore');
+$router->post('', 'PagesController@addtocart');
+$router->post('cart', 'PagesController@cart');
+
+//for testing purposes
+ 
+
+  $router->post('/', 'PagesController@addtocart');
+  $router->post('home', 'PagesController@addtocart');
+  $router->post('index.php', 'PagesController@addtocart');
+ 

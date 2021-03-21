@@ -53,7 +53,7 @@ class AuthController
         }
 
         $password = md5($_POST['password']);
-        $username = $_POST['username'];
+        $username = htmlspecialchars($_POST['username']);
 
         if (App::get('database')->login($username, $password)[0] == 1) {
 

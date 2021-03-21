@@ -34,17 +34,35 @@
              <a href="sign-out" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100" role="menuitem">Remove</a>
             </div>
           </li>';
-    }else{
-     echo '<li class="md:ml-4">
+          echo '<li class="md:ml-4">
         <a class="block no-underline hover:underline py-2 text-blue-darkest hover:text-black md:border-none md:p-0" href="/products">
           Products
         </a>
       </li>';
-      echo '<li class="md:ml-4">
+    }else{
+      if(isset($_SESSION['cart'])){
+        
+      echo '<li class="md:ml-4 mr-2">
+      <a class="block no-underline hover:underline py-2 text-blue-darkest hover:text-black md:border-none md:p-0" href="/cart">
+        Cart
+        <span class="text-xs font-semibold inline-block py-1 px-2  rounded text-pink-600 bg-pink-200 last:mr-0 mr-1">
+  '.count($_SESSION['cart']).'
+</span>
+      </a>
+    </li>';
+      }else{
+        echo '<li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-blue-darkest hover:text-black md:border-none md:p-0" href="/products">
+          Products
+        </a>
+      </li>';
+      echo '<li class="md:ml-4 mr-2">
       <a class="block no-underline hover:underline py-2 text-blue-darkest hover:text-black md:border-none md:p-0" href="/cart">
         Cart
       </a>
     </li>';
+      }
+    
     }
   }
    ?>
@@ -52,10 +70,11 @@
       <?php 
         if(isset($_SESSION['id'])){
         
+       
          echo '<div x-data="{ dropdownOpen: false }" class="relative ">
          <button @click="dropdownOpen = !dropdownOpen" class="relative z-10 block rounded-md bg-blue-400 p-2 focus:outline-none">
          <span class="sr-only">Open user menu</span>
-         <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+         <img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name='.  $_SESSION['name'].'&background=random&length=1" alt="'.  $_SESSION['name'].'Profile Image">
        
          </button>
          

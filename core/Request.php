@@ -14,12 +14,7 @@ class Request{
     }
    public static function getProduct(){
 
-       /*  $seller_id =  $_POST['seller_id'];
-        $product_description =   $_POST['product-description'];
-        $product_price =   $_POST['product-price'];
-        $product_image =   $_POST['quantity'];
-        $image =   static::getImage();
-        $updatedAt =   $_POST['updatedAt'];  */
+    //from the form
         $seller_id =  htmlspecialchars((int)$_POST['seller_id']);
         $product_name = htmlspecialchars($_POST['product-name']);
         $product_description =  htmlspecialchars($_POST['product-description']);
@@ -27,7 +22,7 @@ class Request{
         $quantity =  htmlspecialchars((int)$_POST['quantity']);
         $image =   static::getImage();
         $updatedAt =  date("Y-m-d",strtotime($_POST['updatedAt'])); 
-
+      
         //get everything in an array
         $arg = [
             'seller_id' =>   $seller_id,
@@ -63,14 +58,15 @@ class Request{
             
             if(move_uploaded_file($fileTmpPath, $dest_path))
             {
-               echo 'File is successfully uploaded.'.PHP_EOL;
+              // echo 'File is successfully uploaded.'.PHP_EOL;
+              // $message ='File is successfully uploaded.';
                return $newFileName;
-            //$message ='File is successfully uploaded.';
+           
             }
             else
             {
                 echo 'Error:' . $_FILES['product-image']['error'];
-            //$message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
+           // $message = 'Error:' . $_FILES['product-image']['error'];
             }
             
         }

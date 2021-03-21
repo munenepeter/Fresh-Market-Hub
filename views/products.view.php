@@ -8,10 +8,11 @@
   <div class="container mt-4 mx-auto">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <?php foreach ($products as $product) : ?>
+        <form action="/" method="POST">
         <div class="card m-2 cursor-pointer border border-gray-400 bg-white rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
           <div class="m-4">
             <div class="p-2 m-2 justify-items-center">
-              <img class=" w-full h-full rounded-lg" src="<?= $product->product_image; ?>" alt="Room Image">
+              <img class=" w-full h-full rounded-lg" src="<?= '/public/images/'.$product->product_image; ?>" alt="Room Image">
             </div>
 
             <h2 class="text-lg mb-2"><?= $product->product_name; ?>
@@ -34,6 +35,7 @@
             </h2>
           </div>
         </div>
+        </form>
       <?php endforeach; ?>
     </div>
   </div>
