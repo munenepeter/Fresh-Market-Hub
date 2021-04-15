@@ -42,13 +42,20 @@
     }else{
       if(isset($_SESSION['cart'])){
         
-      echo '<li class="md:ml-4 mr-2">
-      <a class="block no-underline hover:underline py-2 text-blue-darkest hover:text-black md:border-none md:p-0" href="/cart">
-        Cart
-        <span class="text-xs font-semibold inline-block py-1 px-2  rounded text-pink-600 bg-pink-200 last:mr-0 mr-1">
-  '.count($_SESSION['cart']).'
-</span>
-      </a>
+  
+      echo '<li class="md:ml-4 mr-4">
+      <a class=" justify-center items-center relative no-underline hover:underline py-2 text-blue-darkest hover:text-black md:border-none md:p-0" href="/cart"> 
+    
+    <span class="'. (count($_SESSION['cart']) > 0 ? 'hidden' : '')   .'hidden font-semibold text-center opacity-75 h-6 w-6 rounded-full bg-red-400 absolute -top-4 -right-4 "> 
+    '.count($_SESSION['cart']).'
+    <span class=" overflow-hidden animate-ping absolute -right-1 -top-0 inline-flex h-6 w-6 rounded-full bg-red-800 opacity-75"></span> 
+  
+    </span>
+ 
+  Cart
+  
+  </a>
+   
     </li>';
       }else{
         echo '<li class="md:ml-4">

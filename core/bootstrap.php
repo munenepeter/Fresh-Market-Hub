@@ -55,6 +55,11 @@ function viewAuth($name, $data = []){
 
     return require "views/auth/{$name}.view.php";
 }
+function viewErrors($name, $data = []){
+    extract($data);
+
+    return require "views/Errors/{$name}.view.php";
+}
 
 //Most complicated function and witchcraft i have ever used
 /* function addToCartForm(){

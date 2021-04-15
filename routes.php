@@ -25,9 +25,6 @@ $router->post('', 'PagesController@addtocart');
 $router->post('cart', 'PagesController@cart');
 
 //for testing purposes
- 
-
-  $router->post('/', 'PagesController@addtocart');
-  $router->post('home', 'PagesController@addtocart');
-  $router->post('index.php', 'PagesController@addtocart');
- 
+$router->post('/', 'PagesController@addtocart');
+$router->post('home', 'PagesController@addtocart');
+$router->post('index.php', 'PagesController@addtocart');

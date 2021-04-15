@@ -27,7 +27,7 @@ class Router{
     }
 
     public function direct($uri, $requestType){
-
+      
         if(array_key_exists($uri, $this->routes[$requestType])){
             
             return $this->callAction(
@@ -40,10 +40,11 @@ class Router{
     protected function callAction($controller, $action){
 
         $controller = new $controller;
+        $name = get_class($controller);
 
         if(!method_exists($controller, $action)){
 
-             throw new Exception("{$controller} doesn't not respond to {$action} action!");
+            throw new Exception("{$name} doesn't not respond to {$action} Method!");
         }
 
         return $controller->$action();

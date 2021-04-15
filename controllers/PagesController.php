@@ -24,18 +24,17 @@ class PagesController
             'products' => $products,
             'header' => $header
         ]);
-      
     }
     public function users()
     {
         require 'core/Users.php';
 
         $users = App::get('database')->selectAll('users', 'Users');
-       
+
         $header = 'Users';
         return view('users', [
-         'users' => $users,
-         'header' => $header 
+            'users' => $users,
+            'header' => $header
         ]);
     }
     public function register()
@@ -50,51 +49,47 @@ class PagesController
         return viewAuth('login');
     }
 
-    public function addtocart(){
-        
+    public function addtocart()
+    {
+        //Check if add t cart has been pressed
         if (isset($_POST['addtocart'])) {
+            //check if there is a session of cart
             if (isset($_SESSION['cart'])) {
-    
+
                 $item_array_id = array_column($_SESSION['cart'], 'product_id');
-                //print_r($item_array_id);
-    
-                if (in_array($_POST['product_id'], $item_array_id)) {
-              
-                    echo '      <div class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
-                    <p>Item is already in the cart...!</p>
-                  </div>';
-                                 
-                }else{
-    
+                 //check if the product already exists in the cart if not add it
+                if (!in_array($_POST['product_id'], $item_array_id)) {
                     $count = count($_SESSION['cart']);
                     $item_array = ['product_id' => $_POST['product_id']];
                     $_SESSION['cart'][$count] = $item_array;
                     echo '
-                          <div class="text-xl font-normal  max-w-full flex-initial">
-                        The Product has been Added to the cart cart</div>
-                        </div>';
-                       echo "<script>window.location.reload()</script>";
-    
-                }
+                     <div class="text-xl font-normal  max-w-full flex-initial">
+                        The Product has been Added to the  cart
+                     </div>';
+                    echo "<script>window.location.reload()</script>";
+                } else {
+             
+                    echo "bad";
+                 
+                //    echo '
+                //     <div class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+                //       <p>Item is already in the cart...!</p>
+                //    </div>';
+           }
             } else {
-    
+                //if there is no session of cart create the item array and create the ssession
                 $item_array = [
                     'product_id' => $_POST['product_id']
                 ];
                 //create session variable
-              $_SESSION['cart'][0] = $item_array;
+                $_SESSION['cart'][0] = $item_array;
             }
-            
-    
-            
-        
-           // $header = 'My Shopping cart';
-            return $this->home();  
-            
+            //redirect to the home page
+            return $this->home();
+        }
     }
-    
-}
-public function cart(){
+    public function cart()
+    {
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
 
@@ -108,7 +103,6 @@ public function cart(){
             'products' => $products,
             'total' => $total,
             'header' => $header
-        ]); 
-}
-
+        ]);
+    }
 }
