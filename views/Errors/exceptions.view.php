@@ -60,7 +60,7 @@
                             <h3 class="text-red-700 font-semibold text-lg tracking-wide">
                                 Exception:
                             </h3>
-                            <div class="bg-red-200  w-1/2 h-12 justify-items-center rounded-lg shadow-lg">
+                            <div class="bg-red-200  w-full h-12 justify-items-center rounded-lg shadow-lg">
                                 <h3 class="p-2 text-pink-800 font-semibold text-lg tracking-wide">
                                     <?= $message; ?>
                                 </h3>

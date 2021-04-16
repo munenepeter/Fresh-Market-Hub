@@ -7,19 +7,18 @@ class ProductsController{
         return view('add-products',[
          'header' => $header  
         ]);
-  }
+   }
   
-  public function addProductsStore(){
- 
+   public function addProductsStore(){
     //insert into db
-
-   App::get('database')->insert('products', Request::getProduct());
+    App::get('database')->insert('products', Request::getProduct());
+    
+        $header = 'Add Product';
+        $message = 'Successfully uploaded a new product';
+        return view('add-products',[
+            'header' => $header,
+            'message' => $message  
+        ]);
+   }
    
-    $header = 'Add Product';
-    $message = 'Successfully uploaded a new product';
-    return view('add-products',[
-        'header' => $header,
-        'message' => $message  
-       ]);
-}
 }

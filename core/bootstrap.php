@@ -15,6 +15,7 @@ require 'core/DbProducts.php';
 //Here You Require all the Controllers needed to redirect the app
 require 'controllers/ProductsController.php';
 require 'controllers/AuthController.php';
+require 'controllers/PaymentsController.php';
 require 'controllers/PagesController.php';
 require 'core/database/Connection.php';
 require 'core/database/QueryBuilder.php';

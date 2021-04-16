@@ -23,6 +23,7 @@ $router->post('upload', 'AuthController@upload');
 $router->post('addproduct', 'ProductsController@addProductsStore');
 $router->post('', 'PagesController@addtocart');
 $router->post('cart', 'PagesController@cart');
+$router->post('checkout', 'PaymentsController@storeDetails');
 
 //for testing purposes
 $router->post('/', 'PagesController@addtocart');

@@ -52,8 +52,7 @@ if (isset($_POST['remove'])) {
                         <img class="h-24 w-40" src="<?= '/public/images/' . $product->product_image; ?>" alt="">
                       </div>
                       <div class="flex flex-col justify-between ml-4 flex-grow">
-                        <!--           
-            <span class="font-bold text-sm capitalize"><?= $id; ?></span> -->
+         
                         <span class="font-bold text-sm capitalize"><?= $product->product_name; ?></span>
                         <span class="text-red-500 text-xs"><?= $product->updated_date; ?></span>
                         <button type="submit" name="remove" class="ml-0 w-14  bg-red-200 borde-1 rounded-lg px-2 py-2 font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>

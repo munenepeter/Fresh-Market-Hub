@@ -71,4 +71,56 @@ class Request{
             
         }
    }
+ 
+  
+   public static function getCheckoutFormDetails(){
+      //get all the post values
+      $lastname = htmlspecialchars($_POST['lastname']);
+      $address = htmlspecialchars($_POST['address']);
+      $apartment = htmlspecialchars($_POST['apartment']);
+      $zipcode = htmlspecialchars((int)$_POST['zipcode']);
+      $city = htmlspecialchars($_POST['city']);
+      $phoneNumber = htmlspecialchars((int)$_POST['phonenumber']);
+      $userId = htmlspecialchars((int)$_POST['userid']);
+      
+      //get everything in an array
+      $checkoutFormDetails = [
+        'last_name' =>    $lastname,
+        'address' =>     $address,
+        'apartment' =>   $apartment,
+        'zipcode' =>     $zipcode,
+        'city' =>        $city,
+        'users_id' =>    $userId,
+        'phoneno' => $phoneNumber
+    ];
+   
+    return $checkoutFormDetails;
+
+   }
+
+   public static function getItemsInCart(){
+
+    $products = App::get('database')->selectAll('products', 'DbProducts');
+    $product_id = array_column($_SESSION['cart'], 'product_id');
+
+    foreach($products as $product){
+        foreach($product_id as $id){
+            if ($product->product_id == $id){
+
+                echo '
+                <div class="flex justify-between mb-4 hover:bg-gray-100 bg-gray-200 px-3 py-2">
+                    <div>'.$product->product_name.'</div>
+                    <div>1</div>
+                    <div class="text-right font-medium">Ksh '.(int)$product->product_price.'</div>
+               </div>
+                
+                ';
+
+                //var_dump();
+            }
+        }
+    }
+
+       
+   }
 }

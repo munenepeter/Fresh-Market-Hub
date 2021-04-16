@@ -5,30 +5,32 @@ class QueryBuilder
 
   protected $pdo;
 
-  public function __construct($pdo)
-  {
+  public function __construct($pdo) {
 
     $this->pdo = $pdo;
   }
 
-  public function selectAll($table, $intoClass)
-  {
+  public function selectAll($table, $intoClass) {
 
     $statement = $this->pdo->prepare("select * from {$table}");
+    
+    if(!$statement->execute()){
 
-    $statement->execute();
-
+      throw new \Exception('Something is up with your Insert!');
+    }
+    
     return $statement->fetchAll(PDO::FETCH_CLASS, $intoClass);
   }
 
-  public function insert($table, $parameters)
-  {
+  public function insert($table, $parameters) {
 
     $sql = sprintf(
-
       'insert into %s (%s) values (%s)',
+
       $table,
+
       implode(', ', array_keys($parameters)),
+
       ':' . implode(', :', array_keys($parameters))
     );
 
@@ -36,13 +38,14 @@ class QueryBuilder
 
       $statement = $this->pdo->prepare($sql);
       $statement->execute($parameters);
-    } catch (Exception $e) {
-
-      die('Whoops something is wrong' . $e->getMessage);
+    } catch (\Exception $e) {
+      
+       throw new \Exception('Something is up with your Insert!' .$e->getMessage());
+       die();
     }
   }
-  public function register($email)
-  {
+
+  public function register($email){
     $sql = "SELECT * FROM `users` WHERE email =:email";
     $statement = $this->pdo->prepare($sql);
     $statement->bindParam(':email', $email);
@@ -53,31 +56,51 @@ class QueryBuilder
     return $count = $statement->rowCount();
    
   }
-  public function login($username, $password)
-  {
-    $sql = "SELECT * FROM `users` WHERE username =:username AND password =:password";
+
+  public function checkoutUser($id){
+
+    $sql = "SELECT * FROM `users` INNER JOIN `userdetails`
+    ON users.id = userdetails.users_id WHERE users.id =:id";
+
     $statement = $this->pdo->prepare($sql);
+    $statement->bindParam(':id', $id);
+
+    $statement->execute();
+
+    $row = $statement->fetch(PDO::FETCH_ASSOC); 
+
+    return $row;
+  }
+
+  public function login($username, $password) {
+
+    $sql = "SELECT * FROM `users` WHERE username =:username AND password =:password";
+
+    $statement = $this->pdo->prepare($sql);
+
     $statement->bindParam(':username', $username);
     $statement->bindParam(':password', $password);
+
     $statement->execute();
 
     $results = [];
 
     $row = $statement->fetch(PDO::FETCH_ASSOC);
+
     $count = $statement->rowCount();
+
     array_push($results, $count,$row);
+    
     return $results;
  
   }
-  public function session()
-  {
+  public function session(){
 
     if (isset($_SESSION['login'])) {
       return $_SESSION['login'];
     }
   }
-  public function logout()
-  {
+  public function logout() {
     $_SESSION['login'] = false;
     session_destroy();
   }

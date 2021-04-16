@@ -3,7 +3,7 @@
 <div class="flex items-center justify-between mb-4 md:mb-0">
     <h1 class="leading-none text-2xl text-blue-darkest">
       <a class="no-underline text-blue-darkest hover:text-black" href="/">
-        Fresh Market Hub
+     <span class="text-green-800">Fresh </span>   Market Hub
       </a>
     </h1> 
     <a class="text-black hover:text-orange md:hidden" href="#">
@@ -113,8 +113,9 @@
   </header>
   <header class="bg-gray-100 shadow">
     <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-gray-900">
-        <?=$header?>
+      <h1 class="text-3xl capitalize font-bold text-gray-900">
+        <?= Request::uri() ?>
       </h1>
+       
     </div>
   </header>

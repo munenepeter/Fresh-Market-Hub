@@ -60,11 +60,13 @@ class AuthController
             require 'core/Users.php';
             
             $loggedUser = App::get('database')->login($username, $password)[1];
+            
             session_start();
 
             $_SESSION['login'] = true;
             $_SESSION['id'] = (int)$loggedUser['id'];
             $_SESSION['name'] = $loggedUser['username'];
+            $_SESSION['email'] = $loggedUser['email'];
             $_SESSION['type'] = (int)$loggedUser['type'];
             
             header('location: home');

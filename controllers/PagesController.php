@@ -19,10 +19,9 @@ class PagesController
         //require 'core/ProductsInDB.php';
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
-        $header = 'Products';
         return view('products', [
-            'products' => $products,
-            'header' => $header
+            'products' => $products
+            
         ]);
     }
     public function users()
@@ -51,7 +50,7 @@ class PagesController
 
     public function addtocart()
     {
-        //Check if add t cart has been pressed
+        //Check if add to cart has been pressed
         if (isset($_POST['addtocart'])) {
             //check if there is a session of cart
             if (isset($_SESSION['cart'])) {
@@ -88,21 +87,27 @@ class PagesController
             return $this->home();
         }
     }
-    public function cart()
-    {
+    public function cart(){
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
 
         $product_id = array_column($_SESSION['cart'], 'product_id');
 
         $total = 0;
-
-        $header = 'My Shopping Cart';
+ 
         return view('cart', [
             'product_id' => $product_id,
             'products' => $products,
-            'total' => $total,
-            'header' => $header
+            'total' => $total 
+        ]);
+    }
+    public function checkout(){
+        
+        $id = $_SESSION['id'];
+        $user = App::get('database')->checkoutUser($id);
+        
+        return view('checkout',[
+         'user' => $user
         ]);
     }
 }
