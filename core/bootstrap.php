@@ -1,6 +1,12 @@
 <?php
+
+use App\Core\App;
+use App\Core\Database\Connection;
+use App\Core\Database\QueryBuilder;
+
+
 //Require the App Class -> binder of the most important parts like the DB
-require 'core/App.php';
+//require 'core/App.php';
 
 //Bind the config file(The database credentials)
 App::bind('config', require 'config.php');
@@ -9,16 +15,16 @@ App::bind('config', require 'config.php');
 session_start();
 
 //Here You Require all the Classes needed to run the app
-require 'core/Router.php';
-require 'core/Request.php';
-require 'core/DbProducts.php';
+// require 'Core/Router.php';
+// require 'Core/Request.php';
+//require 'DbProducts.php';
 //Here You Require all the Controllers needed to redirect the app
-require 'controllers/ProductsController.php';
-require 'controllers/AuthController.php';
-require 'controllers/PaymentsController.php';
-require 'controllers/PagesController.php';
-require 'core/database/Connection.php';
-require 'core/database/QueryBuilder.php';
+// require 'Controllers/ProductsController.php';
+// require 'Controllers/AuthController.php';
+// require 'Controllers/PaymentsController.php';
+// require 'Controllers/PagesController.php';
+//require 'Core/Database/Connection.php';
+//require 'Core/Database/QueryBuilder.php';
 
    //Bind the Database credentials and connect to the app
    // Bind the requred databsase file above to 

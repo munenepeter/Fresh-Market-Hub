@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!-- Offline css files -->
-     <link rel="stylesheet" href="../../public/tailwindcss.css">
-    <link rel="stylesheet" href="../../public/custom-forms.css">
+     <!-- <link rel="stylesheet" href="../../public/tailwindcss.css">
+    <link rel="stylesheet" href="../../public/custom-forms.css"> -->
     
     <!-- Online css files -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -15,8 +15,8 @@
     <title> </title>
     <!-- Offline js files -->
     
-    <script src="../../public/alpine.js" defer></script>
-    <script src="../../public/customform.js" defer></script>
+    <!-- <script src="../../public/alpine.js" defer></script>
+    <script src="../../public/customform.js" defer></script> -->
     <!-- Online js files -->
    
    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/src/index.min.js" defer></script>

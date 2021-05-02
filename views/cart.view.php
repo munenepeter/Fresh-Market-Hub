@@ -23,7 +23,7 @@ if (isset($_POST['remove'])) {
     }
   }
 }
-
+// die(var_dump($_SESSION['cart'] )); 
 ?>
 
 <div class="m-2">
@@ -41,46 +41,50 @@ if (isset($_POST['remove'])) {
             <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
             <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
           </div>
-          <?php foreach ($products as $product) : ?>
-            <?php foreach ($product_id as $id) : ?>
-              <?php if ($product->product_id == $id) : ?>
-                <form action="/cart?action=remove&id=<?= $id ?>" method="post">
-                  <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-                    <div class="flex w-2/5">
-                      <!-- product -->
-                      <div class="w-40">
-                        <img class="h-24 w-40" src="<?= '/public/images/' . $product->product_image; ?>" alt="">
-                      </div>
-                      <div class="flex flex-col justify-between ml-4 flex-grow">
-         
-                        <span class="font-bold text-sm capitalize"><?= $product->product_name; ?></span>
-                        <span class="text-red-500 text-xs"><?= $product->updated_date; ?></span>
-                        <button type="submit" name="remove" class="ml-0 w-14  bg-red-200 borde-1 rounded-lg px-2 py-2 font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
-                      </div>
-                    </div>
-                    <div class="flex justify-center w-1/5">
-                      <button>
-                        <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                          <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                        </svg>
-                      </button> 
-                      <input class="mx-2 border text-center w-8" type="text" value="1">
-                      <button>
-                        <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                          <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                        </svg>
-                      </button>
 
-                    </div>
-                    <span class="text-center w-1/5 font-semibold text-sm"><?= 'Ksh ' . $product->product_price; ?></span>
-                    <span class="text-center w-1/5 font-semibold text-sm"><?= 'Ksh ' . (int)$product->product_price; ?></span>
-                  </div>
-                </form>
-                <?php $total = $total + $product->product_price; ?>
-              <?php endif; ?>
+          <!-- Loop throught the products in DB -->
+          <?php foreach ($products as $product) : ?>
+            <!-- Loop through the session variables ie product_id and quantity -->
+            <?php foreach ($_SESSION['cart'] as $cartItem) : ?>
+              <!-- Loop thru the session's product_id as an id and Cast the values so that you can loop -->
+              <?php foreach ((array)$cartItem['product_id'] as $id) : ?>
+                <!-- Loop thru the session's quantity as an quanity and Cast the values so that you can loop -->
+                <?php foreach ((array)$cartItem['quantity'] as $quantity) : ?>
+                  <!-- Check if the product that is in the $_SESSION['cart'] matches with the one in db -->
+                  <?php if ($product->product_id == $id) : ?>
+                    <!-- Start of the form add the remove URL ie http://....../cart?action=remove&id=... -->
+                    <form action="/cart?action=remove&id=<?= $id ?>" method="post">
+                      <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                        <div class="flex w-2/5">
+                          <!-- Loop through the product details from the Db -->
+                          <div class="w-40">
+                            <img class="h-24 w-40" src="<?= '/public/images/' . $product->product_image; ?>" alt="">
+                          </div>
+                          <div class="flex flex-col justify-between ml-4 flex-grow">
+
+                            <span class="font-bold text-sm capitalize"><?= $product->product_name; ?></span>
+                            <span class="text-red-500 text-xs"><?= $product->updated_date; ?></span>
+                            <button type="submit" name="remove" class="ml-0 w-14  bg-red-200 borde-1 rounded-lg px-2 py-2 font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
+                          </div>
+                        </div>
+                        <div class="flex justify-center w-1/5">
+                          <!-- Get the looped Quanity as specified n' cast into an Int-->
+                          <span class="text-center w-1/5 font-semibold text-sm"><?= (int)$quantity  ?></span>
+
+                        </div>
+                        <span class="text-center w-1/5 font-semibold text-sm"><?= 'Ksh ' . $product->product_price; ?></span>
+                        <span class="text-center w-1/5 font-semibold text-sm">
+                        <?php $productTotal = (int)$product->product_price * (int)$quantity ; ?>
+                        <?= 'Ksh ' . (int)$productTotal; ?></span>
+                      </div>
+                    </form>
+                    <?php $total = $total + (int)$productTotal; ?>
+
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              <?php endforeach; ?>
             <?php endforeach; ?>
           <?php endforeach; ?>
-
           <a href="/home" class="flex font-semibold text-indigo-600 text-sm mt-10">
 
             <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
@@ -110,7 +114,7 @@ if (isset($_POST['remove'])) {
               <span>Total cost</span>
               <span>Ksh <?= $total ?></span>
             </div>
-            <a class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-8"  href="/checkout" >Checkout</a>
+            <a class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-8" href="/checkout">Checkout</a>
           </div>
         </div>
 

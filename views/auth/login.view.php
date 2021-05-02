@@ -10,33 +10,39 @@
     <script src="../../public/alpine.js" defer></script>
     <script src="../../public/customform.js" defer></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  
+
 </head>
 
 <body class="bg-blue-50">
     <div class="flex items-center justify-center h-screen">
-        <div class="m-auto lg:w-1/2 h-auto  bg-white">
-            <div class="py-8 bg-blue-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
+        <div class="m-auto lg:w-1/2 h-auto  border-1 border-blue-800  bg-white">
+            <div class="py-6 bg-blue-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
                 <div class="cursor-pointer flex items-center">
-                    <div class="text-2xl text-blue-800 tracking-wide ml-2 font-semibold">Fresh Market Hub</div>
+                    <div class="text-2xl text-blue-800 tracking-wide ml-2 font-semibold">
+                        <div class="flex flex-row">
+                            <h2 class="text-3xl text-green-400 font-semibold">Fresh </h2>
+                            <h2 class="text-3xl font-semibold"> Market Hub</h2>
+
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="mt-8 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+            <div class="mt-4 px-8 sm:px-24 md:px-48 lg:px-8 lg:mt-8 xl:px-24 xl:max-w-2xl">
                 <h2 class="text-center text-4xl text-blue-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Log in</h2>
-                <div class="mt-2">
-                <div class="<?php (empty($msg)) ?'hidden' : ''; ?> py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200 flex items-center" role="alert">
-                <div class="w-4 mr-2">
+                <div class="mt-4">
+                    <div class="<?= (!$msg) ? 'hidden' : ''; ?> py-3 px-5 mb-4 bg-red-600 text-red-100 text-sm rounded-md border border-green-200 flex items-center" role="alert">
+                        <div class="w-4 mr-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </div>
-                        <span><strong><?=$msg;?></strong></span>
+                        <span><strong><?= $msg; ?></strong></span>
                         <button class="w-4 ml-40" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
-                        </button> 
+                        </button>
                     </div>
                     <form action="/login" method="post">
                         <div>

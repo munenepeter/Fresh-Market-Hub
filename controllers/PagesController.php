@@ -1,34 +1,46 @@
 <?php
 
-class PagesController
-{
+namespace App\Controllers;
 
-    public function home()
-    {
+use App\Core\App;
+
+
+class PagesController {
+    public $alert;
+
+    public function home() {
         //require 'core/ProductsInDB.php';
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
-        $header = 'All Products';
+
         return view('home', [
-            'products' => $products,
-            'header' => $header
+            'alert' => $this->alert,
+            'products' => $products
         ]);
     }
-    public function products()
-    {
+    public function products() {
         //require 'core/ProductsInDB.php';
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
+        
         return view('products', [
+            'alert' => $this->alert,
             'products' => $products
-            
+
         ]);
     }
-    public function users()
-    {
+    public function editProduct() {
+        $products = App::get('database')->selectAll('products', 'DbProducts');
+
+        return view('edit-product', [
+            'products' => $products
+
+        ]);
+    }
+    public function users() {
         require 'core/Users.php';
 
-        $users = App::get('database')->selectAll('users', 'Users');
+        $users = App::get('database')->selectAll('users', 'App\\Core\\Users');
 
         $header = 'Users';
         return view('users', [
@@ -36,49 +48,45 @@ class PagesController
             'header' => $header
         ]);
     }
-    public function register()
-    {
+    public function register() {
 
         return viewAuth('register');
     }
 
-    public function signup()
-    {
+    public function signup() {
 
         return viewAuth('login');
     }
 
-    public function addtocart()
-    {
+    public function addtocart() {
         //Check if add to cart has been pressed
         if (isset($_POST['addtocart'])) {
             //check if there is a session of cart
             if (isset($_SESSION['cart'])) {
 
                 $item_array_id = array_column($_SESSION['cart'], 'product_id');
-                 //check if the product already exists in the cart if not add it
+                //check if the product already exists in the cart if not add it
                 if (!in_array($_POST['product_id'], $item_array_id)) {
+
                     $count = count($_SESSION['cart']);
-                    $item_array = ['product_id' => $_POST['product_id']];
+
+                    $item_array = [
+                        'product_id' => $_POST['product_id'],
+                        'quantity' => $_POST['quantity']
+                    ];
+
                     $_SESSION['cart'][$count] = $item_array;
-                    echo '
-                     <div class="text-xl font-normal  max-w-full flex-initial">
-                        The Product has been Added to the  cart
-                     </div>';
-                    echo "<script>window.location.reload()</script>";
+
+                    $this->alert = "Item was added to the Cart";
                 } else {
-             
-                    echo "bad";
-                 
-                //    echo '
-                //     <div class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
-                //       <p>Item is already in the cart...!</p>
-                //    </div>';
-           }
+
+                    $this->alert = "Item is already in the cart";
+                }
             } else {
                 //if there is no session of cart create the item array and create the ssession
                 $item_array = [
-                    'product_id' => $_POST['product_id']
+                    'product_id' => $_POST['product_id'],
+                    'quantity' => $_POST['quantity']
                 ];
                 //create session variable
                 $_SESSION['cart'][0] = $item_array;
@@ -87,27 +95,32 @@ class PagesController
             return $this->home();
         }
     }
-    public function cart(){
+    public function cart() {
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
-
+        $ProductQuantities = array_column($_SESSION['cart'], 'quantity');
         $product_id = array_column($_SESSION['cart'], 'product_id');
 
+
         $total = 0;
- 
+
         return view('cart', [
+            'ProductQuantities' => $ProductQuantities,
             'product_id' => $product_id,
             'products' => $products,
-            'total' => $total 
+            'total' => $total
         ]);
     }
-    public function checkout(){
-        
+    public function checkout() {
+
         $id = $_SESSION['id'];
         $user = App::get('database')->checkoutUser($id);
-        
-        return view('checkout',[
-         'user' => $user
+
+        return view('checkout', [
+            'user' => $user
         ]);
+    }
+    public function email() {
+        return view('email');
     }
 }

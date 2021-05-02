@@ -1,17 +1,19 @@
 <?php
 
-class AuthController
-{
+
+ namespace App\Controllers;
+ 
+ use App\Core\App;
+
+class AuthController {
 
 
-    public function register()
-    {
+    public function register() {
         $msg = '';
         return viewAuth('register', ['msg' => $msg]);
     }
-    public function registerstore()
-    {
-      
+    public function registerstore() {
+
         $password = md5($_POST['password']);
         $username = $_POST['username'];
         $email = $_POST['email'];
@@ -30,7 +32,6 @@ class AuthController
 
             return viewAuth('login', ['msg' => $msg]);
             exit();
-
         } else {
 
             $msg = "Entered email already exists!";
@@ -39,14 +40,12 @@ class AuthController
             exit();
         }
     }
-    public function login()
-    {
+    public function login() {
         $msg = '';
         return viewAuth('login', ['msg' => $msg]);
         exit();
     }
-    public function loginstore()
-    {
+    public function loginstore() {
 
         if (App::get('database')->session()) {
             return view('home');
@@ -58,9 +57,9 @@ class AuthController
         if (App::get('database')->login($username, $password)[0] == 1) {
 
             require 'core/Users.php';
-            
+
             $loggedUser = App::get('database')->login($username, $password)[1];
-            
+
             session_start();
 
             $_SESSION['login'] = true;
@@ -68,16 +67,16 @@ class AuthController
             $_SESSION['name'] = $loggedUser['username'];
             $_SESSION['email'] = $loggedUser['email'];
             $_SESSION['type'] = (int)$loggedUser['type'];
-            
+
             header('location: home');
             exit();
         } else {
-            $msg = "No account found for {$username}";
+            $msg = "Wrong Login Credentials for {$username}";
             return viewAuth('login', ['msg' => $msg]);
         }
     }
-  
-    public function signout(){
+
+    public function signout() {
 
         session_start();
         session_unset();
@@ -85,5 +84,10 @@ class AuthController
 
         header('location: home');
         exit();
+    }
+    
+    public function logout() {
+        $_SESSION['login'] = false;
+        session_destroy();
     }
 }

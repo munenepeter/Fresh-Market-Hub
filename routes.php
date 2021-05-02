@@ -6,6 +6,7 @@ $router->get('', 'PagesController@home');
 $router->get('/', 'PagesController@home');
 $router->get('home', 'PagesController@home');
 $router->get('index.php', 'PagesController@home');
+$router->get('edit', 'PagesController@editProduct');
 $router->get('products', 'PagesController@products');
 $router->get('users', 'PagesController@users');
 $router->get('checkout', 'PagesController@checkout');
@@ -14,6 +15,7 @@ $router->get('log-in', 'AuthController@login');
 $router->get('cart', 'PagesController@cart');
 $router->get('sign-out', 'AuthController@signout');
 $router->get('add-product', 'ProductsController@addProducts');
+$router->get('email', 'PagesController@email');
 
 //for post requests
 
@@ -24,6 +26,7 @@ $router->post('addproduct', 'ProductsController@addProductsStore');
 $router->post('', 'PagesController@addtocart');
 $router->post('cart', 'PagesController@cart');
 $router->post('checkout', 'PaymentsController@storeDetails');
+$router->post('edit', 'PagesController@editProduct');
 
 //for testing purposes
 $router->post('/', 'PagesController@addtocart');

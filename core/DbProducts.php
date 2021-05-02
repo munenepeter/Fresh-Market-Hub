@@ -1,7 +1,8 @@
 <?php
+namespace App\Core;
 
-class Dbproducts{
-    
+class DbProducts {
+
     public $product_id;
     public $seller_id;
     public $product_name;

@@ -1,5 +1,5 @@
 <?php
-
+ namespace App\Core\Database; 
 class QueryBuilder
 {
 
@@ -19,7 +19,7 @@ class QueryBuilder
       throw new \Exception('Something is up with your Insert!');
     }
     
-    return $statement->fetchAll(PDO::FETCH_CLASS, $intoClass);
+    return $statement->fetchAll(\PDO::FETCH_CLASS,  "App\\Core\\{$intoClass}");
   }
 
   public function insert($table, $parameters) {
@@ -51,7 +51,7 @@ class QueryBuilder
     $statement->bindParam(':email', $email);
 
     $statement->execute();
-    $row = $statement->fetchAll(PDO::FETCH_CLASS);
+    $row = $statement->fetchAll(\PDO::FETCH_CLASS);
 
     return $count = $statement->rowCount();
    
@@ -67,7 +67,7 @@ class QueryBuilder
 
     $statement->execute();
 
-    $row = $statement->fetch(PDO::FETCH_ASSOC); 
+    $row = $statement->fetch(\PDO::FETCH_ASSOC); 
 
     return $row;
   }
@@ -85,7 +85,7 @@ class QueryBuilder
 
     $results = [];
 
-    $row = $statement->fetch(PDO::FETCH_ASSOC);
+    $row = $statement->fetch(\PDO::FETCH_ASSOC);
 
     $count = $statement->rowCount();
 
@@ -99,9 +99,5 @@ class QueryBuilder
     if (isset($_SESSION['login'])) {
       return $_SESSION['login'];
     }
-  }
-  public function logout() {
-    $_SESSION['login'] = false;
-    session_destroy();
   }
 }
