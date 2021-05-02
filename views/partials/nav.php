@@ -18,6 +18,11 @@
           Home
         </a>
       </li>
+      <li class="md:ml-4">
+        <a class="block no-underline hover:underline py-2 text-blue-darkest hover:text-black md:border-none md:p-0" href="/admin">
+         Admin
+        </a>
+      </li>
       <?php 
       
         if(isset($_SESSION['id'])){

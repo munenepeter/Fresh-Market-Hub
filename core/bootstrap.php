@@ -6,7 +6,7 @@ use App\Core\Database\QueryBuilder;
 
 
 //Require the App Class -> binder of the most important parts like the DB
-//require 'core/App.php';
+ 
 
 //Bind the config file(The database credentials)
 App::bind('config', require 'config.php');
@@ -14,22 +14,10 @@ App::bind('config', require 'config.php');
 //session_start
 session_start();
 
-//Here You Require all the Classes needed to run the app
-// require 'Core/Router.php';
-// require 'Core/Request.php';
-//require 'DbProducts.php';
-//Here You Require all the Controllers needed to redirect the app
-// require 'Controllers/ProductsController.php';
-// require 'Controllers/AuthController.php';
-// require 'Controllers/PaymentsController.php';
-// require 'Controllers/PagesController.php';
-//require 'Core/Database/Connection.php';
-//require 'Core/Database/QueryBuilder.php';
+//Bind the Database credentials and connect to the app
+// Bind the requred database file above to 
+//an instance of the connection 
 
-   //Bind the Database credentials and connect to the app
-   // Bind the requred databsase file above to 
-   //an instance of the connection 
- 
 App::bind('database', new QueryBuilder(
     Connection::make(App::get('config')['database'])
 ));
@@ -43,7 +31,7 @@ App::bind('database', new QueryBuilder(
  * 
  * @return file require the requested file
  */
-function view($name, $data = []){
+function view($name, $data = []) {
 
     extract($data);
 
@@ -57,12 +45,12 @@ function view($name, $data = []){
  * 
  * @return file require the requested file
  */
-function viewAuth($name, $data = []){
+function viewAuth($name, $data = []) {
     extract($data);
 
     return require "views/auth/{$name}.view.php";
 }
-function viewErrors($name, $data = []){
+function viewErrors($name, $data = []) {
     extract($data);
 
     return require "views/Errors/{$name}.view.php";

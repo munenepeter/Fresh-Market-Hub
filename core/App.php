@@ -1,21 +1,22 @@
-<?php 
- namespace App\Core;
-class App{
+<?php
+
+namespace App\Core;
+
+class App {
 
     protected static $registry = [];
 
-    public static function bind($key, $value){
-      
+    public static function bind($key, $value) {
+
         static::$registry[$key] = $value;
-        
     }
 
-    public static function get($key){
+    public static function get($key) {
 
-       if(! array_key_exists($key, static::$registry)){
+        if (!array_key_exists($key, static::$registry)) {
 
-           throw new \Exception("No {$key} is bound to this container");
-       }
+            throw new \Exception("No {$key} is bound to this container");
+        }
         return static::$registry[$key];
     }
 }

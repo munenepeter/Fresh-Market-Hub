@@ -6,5 +6,10 @@ class Users{
     public $email;
     public $password;
     public $type;
-    
+    public $last_name;
+    public $address;
+    public $apartment;
+    public $zipcode;
+    public $phoneno;
+    public $join_date;
 }

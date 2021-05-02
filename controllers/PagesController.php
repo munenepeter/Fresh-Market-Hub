@@ -19,16 +19,22 @@ class PagesController {
         ]);
     }
     public function products() {
-        //require 'core/ProductsInDB.php';
+
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
-        
+
         return view('products', [
             'alert' => $this->alert,
             'products' => $products
 
         ]);
     }
+
+    /**
+     * editProduct
+     *
+     * @return View
+     */
     public function editProduct() {
         $products = App::get('database')->selectAll('products', 'DbProducts');
 
@@ -38,14 +44,13 @@ class PagesController {
         ]);
     }
     public function users() {
-        require 'core/Users.php';
+         
 
         $users = App::get('database')->selectAll('users', 'App\\Core\\Users');
 
-        $header = 'Users';
+        
         return view('users', [
-            'users' => $users,
-            'header' => $header
+            'users' => $users   
         ]);
     }
     public function register() {
@@ -58,6 +63,11 @@ class PagesController {
         return viewAuth('login');
     }
 
+    /**
+     * addtocart
+     *
+     * @return void
+     */
     public function addtocart() {
         //Check if add to cart has been pressed
         if (isset($_POST['addtocart'])) {
@@ -122,5 +132,13 @@ class PagesController {
     }
     public function email() {
         return view('email');
+    }
+    public function admin() {
+
+        $users = App::get('database')-> allUserDetails('Users');
+
+        return view('admin',[
+            'users' => $users     
+        ]);
     }
 }

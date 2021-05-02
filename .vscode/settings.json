@@ -1,3 +1,12 @@
 {
-    "php.validate.executablePath": ""
+    "php.validate.executablePath": "",
+    "intelephense.phpdoc.propertyTemplate": {
+
+        "summary": "$1",
+        "tags": [
+            "@var ${1:$SYMBOL_TYPE}"
+        ]
+    },
+    "phpGettersSetters.templatesDir": "",
+    "intelephense.phpdoc.useFullyQualifiedNames": true
 }

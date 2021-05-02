@@ -6,6 +6,7 @@ $router->get('', 'PagesController@home');
 $router->get('/', 'PagesController@home');
 $router->get('home', 'PagesController@home');
 $router->get('index.php', 'PagesController@home');
+$router->get('admin', 'PagesController@admin');
 $router->get('edit', 'PagesController@editProduct');
 $router->get('products', 'PagesController@products');
 $router->get('users', 'PagesController@users');
@@ -16,6 +17,7 @@ $router->get('cart', 'PagesController@cart');
 $router->get('sign-out', 'AuthController@signout');
 $router->get('add-product', 'ProductsController@addProducts');
 $router->get('email', 'PagesController@email');
+$router->get("admin/edit", 'AdminController@editUser');
 
 //for post requests
 
