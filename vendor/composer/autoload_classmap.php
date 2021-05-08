@@ -11,6 +11,7 @@ return array(
     'App\\Controllers\\PagesController' => $baseDir . '/Controllers/PagesController.php',
     'App\\Controllers\\PaymentsController' => $baseDir . '/Controllers/PaymentsController.php',
     'App\\Controllers\\ProductsController' => $baseDir . '/Controllers/ProductsController.php',
+    'App\\Controllers\\SendEmailController' => $baseDir . '/Controllers/SendEmailController.php',
     'App\\Core\\App' => $baseDir . '/Core/App.php',
     'App\\Core\\Database\\Connection' => $baseDir . '/Core/Database/Connection.php',
     'App\\Core\\Database\\QueryBuilder' => $baseDir . '/Core/Database/QueryBuilder.php',
@@ -21,4 +22,9 @@ return array(
     'ComposerAutoloaderInit5085f044cc8904887e71758dd9c1c196' => $vendorDir . '/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'Composer\\Autoload\\ComposerStaticInit5085f044cc8904887e71758dd9c1c196' => $vendorDir . '/composer/autoload_static.php',
+    'PHPMailer\\PHPMailer\\Exception' => $vendorDir . '/phpmailer/phpmailer/src/Exception.php',
+    'PHPMailer\\PHPMailer\\OAuth' => $vendorDir . '/phpmailer/phpmailer/src/OAuth.php',
+    'PHPMailer\\PHPMailer\\PHPMailer' => $vendorDir . '/phpmailer/phpmailer/src/PHPMailer.php',
+    'PHPMailer\\PHPMailer\\POP3' => $vendorDir . '/phpmailer/phpmailer/src/POP3.php',
+    'PHPMailer\\PHPMailer\\SMTP' => $vendorDir . '/phpmailer/phpmailer/src/SMTP.php',
 );

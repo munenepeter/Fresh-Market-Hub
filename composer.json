@@ -3,5 +3,8 @@
         "classmap": [
             "./"
         ]
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.4"
     }
 }
