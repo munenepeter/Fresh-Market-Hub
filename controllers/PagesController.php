@@ -131,7 +131,12 @@ class PagesController {
         ]);
     }
     public function email() {
-        return view('email');
+        $id = $_SESSION['id'];
+        $user = App::get('database')->checkoutUser($id);
+
+        return view('email', [
+            'user' => $user 
+        ]);
     }
     public function admin() {
 

@@ -58,7 +58,8 @@ if (isset($_POST['remove'])) {
                         <div class="flex w-2/5">
                           <!-- Loop through the product details from the Db -->
                           <div class="w-40">
-                            <img class="h-24 w-40" src="<?= '/public/images/' . $product->product_image; ?>" alt="">
+                          <img name="product_image" class="w-full h-full rounded-lg" src="<?= $product->product_image; ?>" alt="<?= $product->product_name; ?> Image">
+                            <!-- <img class="h-24 w-40" src="< '/public/images/' . $product->product_image; ?>" alt=""> -->
                           </div>
                           <div class="flex flex-col justify-between ml-4 flex-grow">
 

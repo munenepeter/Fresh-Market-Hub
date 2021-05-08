@@ -145,11 +145,7 @@ use App\Core\Request;
                     <div class="text-right font-medium"> <button type="button" class="h-12 w-24 rounded font-medium text-xs bg-blue-500 text-white"><a href="/email">Accept</a> </button></div>
 
                 <?php endif ?>
-            </div>
-
-
-
-
+            </div>  
             <div class="text-center text-green-400 text-sm px-3">
                 customercare@freshmarkethub.com | www.freshmarkethub.com
             </div>
