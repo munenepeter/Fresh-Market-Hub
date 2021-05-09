@@ -16,9 +16,8 @@ $router->get('log-in', 'AuthController@login');
 $router->get('cart', 'PagesController@cart');
 $router->get('sign-out', 'AuthController@signout');
 $router->get('add-product', 'ProductsController@addProducts');
-$router->get('email', 'PagesController@email');
 $router->get("admin/edit", 'AdminController@editUser');
-
+$router->get('email', 'PagesController@email');
 //for post requests
 
 $router->post('register', 'AuthController@registerstore');
@@ -29,6 +28,7 @@ $router->post('', 'PagesController@addtocart');
 $router->post('cart', 'PagesController@cart');
 $router->post('checkout', 'PaymentsController@storeDetails');
 $router->post('edit', 'PagesController@editProduct');
+$router->post('email', 'SendEmailController@index');
 
 //for testing purposes
 $router->post('/', 'PagesController@addtocart');

@@ -73,7 +73,6 @@ use App\Core\Request;
             </div>
         </div>
     </div>
-
     <div class="p-4">
         <div class="  bg-white mx-auto p-4">
             <?php if ($user) {  ?>
@@ -142,8 +141,11 @@ use App\Core\Request;
                     <p>Accept The Order to continue</p>
                 </div>
                 <?php if ($user) : ?>
-                    <div class="text-right font-medium"> <button type="button" class="h-12 w-24 rounded font-medium text-xs bg-blue-500 text-white"><a href="/email">Accept</a> </button></div>
-
+                    <form action="/email" method="POST">
+                    <div class="text-right font-medium">
+                         <button type="submit" class="h-12 w-24 rounded font-medium text-xs bg-blue-500 text-white">Accept</button>
+                    </div>
+                    </form>
                 <?php endif ?>
             </div>  
             <div class="text-center text-green-400 text-sm px-3">

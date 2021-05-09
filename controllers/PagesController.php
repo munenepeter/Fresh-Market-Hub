@@ -44,13 +44,13 @@ class PagesController {
         ]);
     }
     public function users() {
-         
+
 
         $users = App::get('database')->selectAll('users', 'App\\Core\\Users');
 
-        
+
         return view('users', [
-            'users' => $users   
+            'users' => $users
         ]);
     }
     public function register() {
@@ -131,19 +131,27 @@ class PagesController {
         ]);
     }
     public function email() {
+        
         $id = $_SESSION['id'];
         $user = App::get('database')->checkoutUser($id);
+        $products = App::get('database')->selectAll('products', 'DbProducts');
+        $product_id = array_column($_SESSION['cart'], 'product_id');
+        $total = 0;
 
         return view('email', [
-            'user' => $user 
+            'products' => $products,
+            'product_id ' => $product_id,
+            'total' => $total,
+            'id' => $id,
+            'user' => $user
         ]);
     }
     public function admin() {
 
-        $users = App::get('database')-> allUserDetails('Users');
+        $users = App::get('database')->allUserDetails('Users');
 
-        return view('admin',[
-            'users' => $users     
+        return view('admin', [
+            'users' => $users
         ]);
     }
 }

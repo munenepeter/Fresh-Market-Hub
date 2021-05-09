@@ -53,6 +53,8 @@ if (isset($_POST['remove'])) {
                   <!-- Check if the product that is in the $_SESSION['cart'] matches with the one in db -->
                   <?php if ($product->product_id == $id) : ?>
                     <!-- Start of the form add the remove URL ie http://....../cart?action=remove&id=... -->
+
+                 
                     <form action="/cart?action=remove&id=<?= $id ?>" method="post">
                       <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                         <div class="flex w-2/5">
@@ -70,13 +72,14 @@ if (isset($_POST['remove'])) {
                         </div>
                         <div class="flex justify-center w-1/5">
                           <!-- Get the looped Quanity as specified n' cast into an Int-->
-                          <span class="text-center w-1/5 font-semibold text-sm"><?= (int)$quantity  ?></span>
+        
+                          <span class="text-center w-1/5 font-semibold text-sm"><?= (empty($quantity)) ? 1 : (int)$quantity  ?></span>
 
                         </div>
-                        <span class="text-center w-1/5 font-semibold text-sm"><?= 'Ksh ' . $product->product_price; ?></span>
+                        <span class="text-center w-1/5 font-semibold text-sm"><?= 'Ksh ' . number_format($product->product_price, 2, '.', ','); ?></span>
                         <span class="text-center w-1/5 font-semibold text-sm">
-                        <?php $productTotal = (int)$product->product_price * (int)$quantity ; ?>
-                        <?= 'Ksh ' . (int)$productTotal; ?></span>
+                        <?php $productTotal = (int)$product->product_price * ((empty($quantity))  ? 1 : (int)$quantity ); ?>
+                        <?= 'Ksh ' . number_format((int)$productTotal, 2, '.', ','); ?></span>
                       </div>
                     </form>
                     <?php $total = $total + (int)$productTotal; ?>
@@ -99,7 +102,7 @@ if (isset($_POST['remove'])) {
           <h1 class="font-semibold text-2xl border-b pb-6">Order Summary</h1>
           <div class="flex justify-between mt-10 mb-5">
             <span class="font-semibold text-sm uppercase">Items <?= count($_SESSION['cart']) ?></span>
-            <span class="font-semibold text-sm">Ksh <?= $total ?></span>
+            <span class="font-semibold text-sm">Ksh <?= number_format($total, 2, '.', ',') ?></span>
           </div>
           <div>
             <h1 class="font-semibold text-2xl border-b pb-6">Shipping</h1>
@@ -113,7 +116,7 @@ if (isset($_POST['remove'])) {
           <div class="border-t mt-6">
             <div class="flex font-semibold justify-between py-6 text-sm uppercase">
               <span>Total cost</span>
-              <span>Ksh <?= $total ?></span>
+              <span>Ksh <?= number_format($total, 2, '.', ',') ?></span>
             </div>
             <a class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-8" href="/checkout">Checkout</a>
           </div>
