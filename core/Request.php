@@ -29,6 +29,39 @@ class Request {
       'user' => $user
     ];
   }
+
+  //get the products details form the form
+  public static function getSales() {
+
+    //from the form
+    $salePostDetails = unserialize(base64_decode($_POST['sales']));
+    $salePostDetails  = array_chunk($salePostDetails, 5, false);
+
+  
+
+      while (count($salePostDetails) > 1) {
+      //$salePostDetail
+        $seller_id = (int)$salePostDetails[0];
+        $date = $salePostDetails[1];
+        $amount_made = (int)$salePostDetails[2];
+        $units_sold = $salePostDetails[3];
+        $no_of_sales = 16;
+   
+     
+  
+    }
+    $saleDetail = [
+      'seller_id' => $seller_id,
+      'date' => $date,
+      'amount_made' => floatval($amount_made),
+      'units_sold' => $units_sold,
+      'no_of_sales' => $no_of_sales
+    ];
+   
+    return $saleDetail;
+  }
+
+
   //get the products details form the form
   public static function getProduct() {
 

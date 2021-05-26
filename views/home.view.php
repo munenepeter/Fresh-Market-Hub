@@ -1,7 +1,72 @@
 <?php require 'partials/head.php'; ?>
 <!-- hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200 -->
 <main>
-  <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-6">
+  <?php
+  // if (isset($_SESSION['id'])) {
+  // }
+  ?>
+  <div class="bg-red-200 sticky top-0">
+
+  </div>
+  <section class="bg-red-200 text-green-900 relative">
+    <div class=" bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 h-48   bg-center bg-cover flex" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmv5AoOlBHko-pxoKMnok496blUtMhDmNS3g&usqp=CAU);">
+      <div class="py-6" >
+        <div class="container mx-auto px-6">
+          <h2 class="text-4xl font-bold mb-2 text-white">
+            Smart Health Monitoring Wristwatch!
+          </h2>
+          <h3 class="text-2xl mb-8 text-gray-200">
+            Monitor your health vitals smartly anywhere you go.
+          </h3>
+
+          <button class="bg-white font-bold rounded-full py-4 px-8 shadow-lg uppercase tracking-wider">
+            Pre Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container mx-auto px-6 p-10">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">
+      Features
+    </h2>
+    <div class="flex items-center flex-wrap mb-20">
+      <div class="w-full md:w-1/2">
+        <h4 class="text-3xl text-gray-800 font-bold mb-3">Exercise Metric</h4>
+        <p class="text-gray-600 mb-8">Our Smart Health Monitoring Wristwatch is able to capture you vitals while you exercise. You can create different category of exercises and can track your vitals on the go.</p>
+      </div>
+      <div class="w-full md:w-1/2">
+        <img src="assets/health.svg" alt="Monitoring" />
+      </div>
+    </div>
+
+    <div class="flex items-center flex-wrap mb-20">
+      <div class="w-full md:w-1/2">
+        <img src="assets/report.svg" alt="Reporting" />
+      </div>
+      <div class="w-full md:w-1/2 pl-10">
+        <h4 class="text-3xl text-gray-800 font-bold mb-3">Reporting</h4>
+        <p class="text-gray-600 mb-8">Our Smart Health Monitoring Wristwatch can generate a comprehensive report on your vitals depending on your settings either daily, weekly, monthly, quarterly or yearly.</p>
+      </div>
+    </div>
+
+    <div class="flex items-center flex-wrap mb-20">
+      <div class="w-full md:w-1/2">
+        <h4 class="text-3xl text-gray-800 font-bold mb-3">Syncing</h4>
+        <p class="text-gray-600 mb-8">Our Smart Health Monitoring Wristwatch allows you to sync data across all your mobile devices whether iOS, Android or Windows OS and also to your laptop whether MacOS, GNU/Linux or Windows OS.</p>
+      </div>
+      <div class="w-full md:w-1/2">
+        <img src="assets/sync.svg" alt="Syncing" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+
+
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ -->
+  <div class="max-w-7xl mx-2 py-4 sm:px-6 lg:px-4">
     <!-- Display All The products -->
     <div class="px-2 py-2 sm:px-0">
       <div class="<?= (!$alert) ? 'hidden' : ''; ?> w-96 py-3 px-5 mb-4 bg-red-600 text-red-100 text-sm rounded-md border border-green-200 flex items-center" role="alert">
@@ -32,7 +97,7 @@ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmv5AoOlBHko-pxoKMnok496bl
                     </div>
                     <div class="">
                       <h2 name="product_name" class="text-lg mb-2 capitalize"><?= $product->product_name; ?>
-                        <span name="updated_date" class="text-sm text-teal-800  bg-teal-100 inline rounded-full  align-top float-right italic "><?= $product->updated_date?></span>
+                        <span name="updated_date" class="text-sm text-teal-800  bg-teal-100 inline rounded-full  align-top float-right italic "><?= $product->updated_date ?></span>
                       </h2>
                     </div>
                     <div class="p-2 h-16">

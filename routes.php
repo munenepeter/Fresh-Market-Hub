@@ -26,6 +26,7 @@ $router->post('upload', 'AuthController@upload');
 $router->post('addproduct', 'ProductsController@addProductsStore');
 $router->post('', 'PagesController@addtocart');
 $router->post('cart', 'PagesController@cart');
+$router->post('sales', 'SalesController@checkout');
 $router->post('checkout', 'PaymentsController@storeDetails');
 $router->post('edit', 'PagesController@editProduct');
 $router->post('email', 'SendEmailController@index');

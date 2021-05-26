@@ -26,6 +26,7 @@ class ComposerStaticInit5085f044cc8904887e71758dd9c1c196
         'App\\Controllers\\PagesController' => __DIR__ . '/../..' . '/Controllers/PagesController.php',
         'App\\Controllers\\PaymentsController' => __DIR__ . '/../..' . '/Controllers/PaymentsController.php',
         'App\\Controllers\\ProductsController' => __DIR__ . '/../..' . '/Controllers/ProductsController.php',
+        'App\\Controllers\\SalesController' => __DIR__ . '/../..' . '/Controllers/SalesController.php',
         'App\\Controllers\\SendEmailController' => __DIR__ . '/../..' . '/Controllers/SendEmailController.php',
         'App\\Core\\App' => __DIR__ . '/../..' . '/Core/App.php',
         'App\\Core\\Database\\Connection' => __DIR__ . '/../..' . '/Core/Database/Connection.php',

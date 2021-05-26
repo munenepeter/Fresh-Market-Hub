@@ -113,12 +113,17 @@ class PagesController {
 
 
         $total = 0;
+        $qty= 0;
+        $sellers = [];
 
         return view('cart', [
             'ProductQuantities' => $ProductQuantities,
             'product_id' => $product_id,
             'products' => $products,
-            'total' => $total
+            'total' => $total,
+            'qty' => $qty,
+            'sellers' => $sellers
+
         ]);
     }
     public function checkout() {

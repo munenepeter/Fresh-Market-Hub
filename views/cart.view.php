@@ -54,13 +54,13 @@ if (isset($_POST['remove'])) {
                   <?php if ($product->product_id == $id) : ?>
                     <!-- Start of the form add the remove URL ie http://....../cart?action=remove&id=... -->
 
-                 
+
                     <form action="/cart?action=remove&id=<?= $id ?>" method="post">
                       <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                         <div class="flex w-2/5">
                           <!-- Loop through the product details from the Db -->
                           <div class="w-40">
-                          <img name="product_image" class="w-full h-full rounded-lg" src="<?= $product->product_image; ?>" alt="<?= $product->product_name; ?> Image">
+                            <img name="product_image" class="w-full h-full rounded-lg" src="<?= $product->product_image; ?>" alt="<?= $product->product_name; ?> Image">
                             <!-- <img class="h-24 w-40" src="< '/public/images/' . $product->product_image; ?>" alt=""> -->
                           </div>
                           <div class="flex flex-col justify-between ml-4 flex-grow">
@@ -72,30 +72,78 @@ if (isset($_POST['remove'])) {
                         </div>
                         <div class="flex justify-center w-1/5">
                           <!-- Get the looped Quanity as specified n' cast into an Int-->
-        
-                          <span class="text-center w-1/5 font-semibold text-sm"><?= (empty($quantity)) ? 1 : (int)$quantity  ?></span>
+                          <?php
+                          if ($quantity < 1 || $quantity == 0) {
+                            $quantity = 1;
+                          }
+                          ?>
+                          <span class="text-center w-1/5 font-semibold text-sm"><?= (int)$quantity //(empty($quantity)) ? 1 : (int)$quantity  
+                                                                                ?></span>
 
                         </div>
                         <span class="text-center w-1/5 font-semibold text-sm"><?= 'Ksh ' . number_format($product->product_price, 2, '.', ','); ?></span>
                         <span class="text-center w-1/5 font-semibold text-sm">
-                        <?php $productTotal = (int)$product->product_price * ((empty($quantity))  ? 1 : (int)$quantity ); ?>
-                        <?= 'Ksh ' . number_format((int)$productTotal, 2, '.', ','); ?></span>
+                          <?php $productTotal = (int)$product->product_price * (int)$quantity; ?>
+                          <?= 'Ksh ' . number_format((int)$productTotal, 2, '.', ','); ?></span>
+
+
                       </div>
                     </form>
-                    <?php $total = $total + (int)$productTotal; ?>
+                    <?php
+                    $qty = $qty + (int)$quantity;
+                    $available_qty = $product->available_quantity - $quantity;
+                    $total = $total + (int)$productTotal;
 
-                  <?php endif; ?>
+                    ?>
+                    <form action="/sales" method="post">
+                      <?php
+
+                      $sellers[] = (int)$product->seller_id;
+                      $sellers[] = date("l j F Y");
+                      $sellers[] = (int)$productTotal;
+                      $sellers[] = $qty;
+                      $sellers[] = $available_qty;
+
+
+                      // foreach ($sellers as $seller) {
+                      //   echo '<input type="hidden" name="sales[]" value="' . $seller . '">';
+                      // }
+
+                      // $seller =  [
+                      //   (int)$product->seller_id,
+                      //   date("Y-m-d H:i:s"),
+                      //   number_format((int)$productTotal, 2, '.', ','),
+                      //   $qty,
+                      //   $available_qty
+                      // ];
+
+                      // $seller =  [
+                      //   'seller_id' => (int)$product->seller_id,
+                      //   'date' => date("Y-m-d H:i:s"),
+                      //   'amount_made' => number_format((int)$productTotal, 2, '.', ','),
+                      //   'units_sold' => $qty,
+                      //   'available_qty' => $available_qty
+                      // ];
+
+
+                      ?>
+                    <input name="sales" value="<?= base64_encode(serialize($sellers)); ?>" type="hidden">
+
+
+
+
+                    <?php endif; ?>
+                  <?php endforeach; ?>
                 <?php endforeach; ?>
               <?php endforeach; ?>
             <?php endforeach; ?>
-          <?php endforeach; ?>
-          <a href="/home" class="flex font-semibold text-indigo-600 text-sm mt-10">
+            <a href="/home" class="flex font-semibold text-indigo-600 text-sm mt-10">
 
-            <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
-              <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
-            </svg>
-            Continue Shopping
-          </a>
+              <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
+                <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
+              </svg>
+              Continue Shopping
+            </a>
         </div>
 
         <div id="summary" class="w-1/4 px-8 py-10">
@@ -117,8 +165,11 @@ if (isset($_POST['remove'])) {
             <div class="flex font-semibold justify-between py-6 text-sm uppercase">
               <span>Total cost</span>
               <span>Ksh <?= number_format($total, 2, '.', ',') ?></span>
+
+
             </div>
-            <a class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-8" href="/checkout">Checkout</a>
+            <button type="submit" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-32">Checkout</button>
+            </form>
           </div>
         </div>
 

@@ -28,6 +28,23 @@
   <style>
     body {
       font-family: 'Sansita', sans-serif;
+
+    }
+
+    .clear-left {
+      clear: left;
+    }
+
+    .hero-image::after {
+      display: block;
+      position: absolute;
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0, #94b2ff 100%);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 15vh;
+      width: 100%;
+      content: '';
     }
   </style>
 </head>
