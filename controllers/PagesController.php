@@ -151,12 +151,5 @@ class PagesController {
             'user' => $user
         ]);
     }
-    public function admin() {
-
-        $users = App::get('database')->allUserDetails('Users');
-
-        return view('admin', [
-            'users' => $users
-        ]);
-    }
+   
 }

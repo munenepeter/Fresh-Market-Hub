@@ -19,7 +19,7 @@ $router->get('index.php', 'PagesController@home');
 $router->get('', 'PagesController@home');
 $router->get('/', 'PagesController@home');
 
-$router->get('admin', 'PagesController@admin');
+$router->get('admin', 'AdminController@index');
 $router->get('users', 'PagesController@users');
 $router->get("admin/edit", 'AdminController@editUser');
 $router->get('home', 'PagesController@home');

@@ -10,7 +10,7 @@ class QueryBuilder {
 
     $this->pdo = $pdo;
   }
-//Select everything and insert into a class
+  //Select everything and insert into a class
 
   public function selectAll(String $table, $intoClass) {
 
@@ -23,13 +23,13 @@ class QueryBuilder {
 
     return $statement->fetchAll(\PDO::FETCH_CLASS,  "App\\Core\\{$intoClass}");
   }
-//////////SELECT WITH A WHERE CLAUSE
- //SELECT * FROM `products` WHERE `product_id` = 19 OR `product_id` = 2 OR `product_id` = 3 OR `product_id` = 4
-  
+  //////////SELECT WITH A WHERE CLAUSE
+  //SELECT * FROM `products` WHERE `product_id` = 19 OR `product_id` = 2 OR `product_id` = 3 OR `product_id` = 4
+
   public function where(String $table, $columnValue) {
- 
-    $statement = $this->pdo->prepare( "select * from {$table} where product_id = 0 {$columnValue} ;");
- 
+
+    $statement = $this->pdo->prepare("select * from {$table} where product_id = 0 {$columnValue} ;");
+
     if (!$statement->execute()) {
 
       throw new \Exception("Something is up with your Select {$statement}!");
@@ -114,13 +114,27 @@ class QueryBuilder {
   public function allUserDetails($intoClass) {
 
     $sql = "SELECT * FROM `users` INNER JOIN `userdetails`
-    ON users.id = userdetails.users_id";
+    ON users.id = userdetails.users_id INNER JOIN `sales` ON users.id = sales.seller_id";
 
     $statement = $this->pdo->prepare($sql);
 
     $statement->execute();
 
     return $statement->fetchAll(\PDO::FETCH_CLASS,  "App\\Core\\{$intoClass}");
+  }
+
+  public function MonthySales($startDate, $endDate) {
+    //select partid,sum(sales)
+
+    $sql = "SELECT SUM(`no_of_sales`) as `NumberOfSales`
+    FROM `sales`
+    WHERE (date BETWEEN '{$startDate}' AND '{$endDate}')";
+
+    $statement = $this->pdo->prepare($sql);
+
+    $statement->execute();
+
+    return $statement->fetch(\PDO::FETCH_ASSOC);
   }
 
   public function session() {
