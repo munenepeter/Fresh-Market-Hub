@@ -5,13 +5,30 @@
 // //define the specific routes for get requests routes
 // Router::middleware('auth', function () {
 //     $router = new Router;
+
+//     //for get requests
+//     $router->get('cart', 'PagesController@cart');
+//     $router->get('edit', 'PagesController@editProduct');
+//     $router->get('products', 'PagesController@products'); 
+//     $router->get('checkout', 'SalesController@checkout');
+//     $router->get('add-product', 'ProductsController@addProducts');
+//     $router->get('email', 'PagesController@email');
+//     //for post requests
+
+//     $router->post('addproduct', 'ProductsController@addProductsStore');
+//     $router->post('cart', 'PagesController@cart');
+//     $router->post('checkout', 'PaymentsController@storeDetails');
+//     $router->post('edit', 'PagesController@editProduct');
+//     $router->post('email', 'SendEmailController@index');
    
     
 
 // });
 // Router::middleware('admin', function () {
 //     $router = new Router;
- 
+//     $router->get('admin', 'AdminController@index');
+//     $router->get('users', 'PagesController@users');
+//     $router->get("admin/edit", 'AdminController@editUser');
 
 // });
 
