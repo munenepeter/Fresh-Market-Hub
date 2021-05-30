@@ -1,9 +1,10 @@
 <?php
-  namespace App\Core;
+
+namespace App\Core;
 
 class Router {
 
-    public $routes = [
+    public static $routes = [
 
         'GET' => [],
         'POST' => []
@@ -15,24 +16,44 @@ class Router {
         require $file;
         return $router;
     }
+    // public static function middleware(String $middleware, $callback) {
 
+    //     if ($middleware == 'auth') {
+    //         if (!AuthCheck()) {
+    //             return viewAuth('login');
+    //         }
 
-    public function get($uri, $controller) {
+           
+    //     }
+    //     if ($middleware == 'admin') {
+            
+    //             if (!AuthAdminCheck()) {
+    //                 return viewErrors('AuthError', ['code' => 403]);
+    //             }
+        
 
-        $this->routes['GET'][$uri] = $controller;
+    //         exit(403);
+    //     }
+
+    //     call_user_func($callback);
+    // }
+
+    public static function get($uri, $controller) {
+
+        self::$routes['GET'][$uri] = $controller;
     }
 
     public function post($uri, $controller) {
 
-        $this->routes['POST'][$uri] = $controller;
+        self::$routes['POST'][$uri] = $controller;
     }
 
     public function direct($uri, $requestType) {
 
-        if (array_key_exists($uri, $this->routes[$requestType])) {
+        if (array_key_exists($uri, self::$routes[$requestType])) {
 
             return $this->callAction(
-                ...explode('@', $this->routes[$requestType][$uri])
+                ...explode('@', self::$routes[$requestType][$uri])
             );
         }
 

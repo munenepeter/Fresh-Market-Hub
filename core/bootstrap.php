@@ -6,7 +6,7 @@ use App\Core\Database\QueryBuilder;
 
 
 //Require the App Class -> binder of the most important parts like the DB
- 
+
 
 //Bind the config file(The database credentials)
 App::bind('config', require 'config.php');
@@ -19,8 +19,10 @@ session_start();
 //an instance of the connection 
 
 App::bind('database', new QueryBuilder(
-    Connection::make(App::get('config')['database'])
+  Connection::make(App::get('config')['database'])
 ));
+
+
 
 //Custom Helper functions
 /**
@@ -33,9 +35,9 @@ App::bind('database', new QueryBuilder(
  */
 function view($name, $data = []) {
 
-    extract($data);
+  extract($data);
 
-    return require "views/{$name}.view.php";
+  return require "views/{$name}.view.php";
 }
 /**
  * Auth View Helper.
@@ -46,17 +48,40 @@ function view($name, $data = []) {
  * @return file require the requested file
  */
 function viewAuth($name, $data = []) {
-    extract($data);
+  extract($data);
 
-    return require "views/auth/{$name}.view.php";
+  return require "views/auth/{$name}.view.php";
 }
 function viewErrors($name, $data = []) {
-    extract($data);
+  extract($data);
 
-    return require "views/Errors/{$name}.view.php";
+  return require "views/Errors/{$name}.view.php";
 }
-function getHTML(){
-    return '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+function dd($variable) {
+  return die(var_dump($variable));
+}
+
+function AuthCheck() {
+  if (isset($_SESSION['id'])) {
+    if ($_SESSION['type'] ==  0 || $_SESSION['type'] == 1 || $_SESSION['type'] == 2) {
+
+      return true;
+    }
+  }
+}
+
+function AuthAdminCheck() {
+  if (isset($_SESSION['id'])) {
+    if ($_SESSION['type'] ==  0) {
+
+      return true;
+    }
+  }
+}
+
+
+function getHTML() {
+  return '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="x-apple-disable-message-reformatting">

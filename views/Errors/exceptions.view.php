@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width">
     <title>Error!</title>
     <!-- Offline js files -->
-    <link rel="stylesheet" href="../../public/tailwindcss.css">
+    <!-- <link rel="stylesheet" href="../../public/tailwindcss.css">
     <script src="../../public/alpine.js" defer></script>
-    <script src="../../public/customform.js" defer></script>
+    <script src="../../public/customform.js" defer></script> -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
 </head>

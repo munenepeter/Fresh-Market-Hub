@@ -102,7 +102,7 @@ class PagesController {
                 $_SESSION['cart'][0] = $item_array;
             }
             //redirect to the home page
-            return $this->home();
+            return $this->products();
         }
     }
     public function cart() {

@@ -48,7 +48,7 @@ class AuthController {
     public function loginstore() {
 
         if (App::get('database')->session()) {
-            return view('home');
+            return view('products');
         }
 
         $password = md5($_POST['password']);
@@ -68,7 +68,7 @@ class AuthController {
             $_SESSION['email'] = $loggedUser['email'];
             $_SESSION['type'] = (int)$loggedUser['type'];
 
-            header('location: home');
+            header('location: products');
             exit();
         } else {
             $msg = "Wrong Login Credentials for {$username}";

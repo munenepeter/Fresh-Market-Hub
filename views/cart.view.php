@@ -95,40 +95,7 @@ if (isset($_POST['remove'])) {
                     $total = $total + (int)$productTotal;
 
                     ?>
-                    <form action="/sales" method="post">
-                      <?php
-
-                      $sellers[] = (int)$product->seller_id;
-                      $sellers[] = date("l j F Y");
-                      $sellers[] = (int)$productTotal;
-                      $sellers[] = $qty;
-                      $sellers[] = $available_qty;
-
-
-                      // foreach ($sellers as $seller) {
-                      //   echo '<input type="hidden" name="sales[]" value="' . $seller . '">';
-                      // }
-
-                      // $seller =  [
-                      //   (int)$product->seller_id,
-                      //   date("Y-m-d H:i:s"),
-                      //   number_format((int)$productTotal, 2, '.', ','),
-                      //   $qty,
-                      //   $available_qty
-                      // ];
-
-                      // $seller =  [
-                      //   'seller_id' => (int)$product->seller_id,
-                      //   'date' => date("Y-m-d H:i:s"),
-                      //   'amount_made' => number_format((int)$productTotal, 2, '.', ','),
-                      //   'units_sold' => $qty,
-                      //   'available_qty' => $available_qty
-                      // ];
-
-
-                      ?>
-                    <input name="sales" value="<?= base64_encode(serialize($sellers)); ?>" type="hidden">
-
+                
 
 
 
@@ -168,8 +135,8 @@ if (isset($_POST['remove'])) {
 
 
             </div>
-            <button type="submit" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-32">Checkout</button>
-            </form>
+            <a href="/checkout" class="bg-indigo-500 font-semibold hover:bg-indigo-600 px-4 py-3 text-sm text-white uppercase w-32">Checkout</a>
+        
           </div>
         </div>
 
