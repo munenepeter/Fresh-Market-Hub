@@ -57,7 +57,11 @@ function viewErrors($name, $data = []) {
 
   return require "views/Errors/{$name}.view.php";
 }
+function dump($variable) {
+  return var_dump($variable);
+}
 function dd($variable) {
+
   return die(var_dump($variable));
 }
 

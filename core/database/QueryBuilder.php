@@ -12,7 +12,7 @@ class QueryBuilder {
   }
 //Select everything and insert into a class
 
-  public function selectAll($table, $intoClass) {
+  public function selectAll(String $table, $intoClass) {
 
     $statement = $this->pdo->prepare("select * from {$table}");
 
@@ -22,6 +22,20 @@ class QueryBuilder {
     }
 
     return $statement->fetchAll(\PDO::FETCH_CLASS,  "App\\Core\\{$intoClass}");
+  }
+//////////SELECT WITH A WHERE CLAUSE
+ //SELECT * FROM `products` WHERE `product_id` = 19 OR `product_id` = 2 OR `product_id` = 3 OR `product_id` = 4
+  
+  public function where(String $table, $columnValue) {
+ 
+    $statement = $this->pdo->prepare( "select * from {$table} where product_id = 0 {$columnValue} ;");
+ 
+    if (!$statement->execute()) {
+
+      throw new \Exception("Something is up with your Select {$statement}!");
+    }
+
+    return $statement->fetch(\PDO::FETCH_ASSOC);
   }
 
   public function insert($table, $parameters) {

@@ -29,41 +29,92 @@ class Request {
       'user' => $user
     ];
   }
-
-  //get the products details form the form
-  public static function getSales() {
-
-    //from the form
-    $salePostDetails = unserialize(base64_decode($_POST['sales']));
-    $salePostDetails  = array_chunk($salePostDetails, 5, false);
-
-  
-
-      while (count($salePostDetails) > 1) {
-      //$salePostDetail
-        $seller_id = (int)$salePostDetails[0];
-        $date = $salePostDetails[1];
-        $amount_made = (int)$salePostDetails[2];
-        $units_sold = $salePostDetails[3];
-        $no_of_sales = 16;
-   
-     
-  
+  public static function getProductForSale() {
+    //initialse an empty array
+    $product_id = [];
+    //loop the session['cart] 
+    foreach ($_SESSION['cart'] as $session) {
+      //after looping remove Quantity
+      array_pop($session);
+      foreach ($session as $key => $value) {
+        //push the remaining product id and add a query string
+        array_push($product_id, 'or product_id =', $value);
+      }
     }
-    $saleDetail = [
+    //implode the array to get //or product_id = 19 or product_id = 2 or product_id = 3 or product_id = 4
+    $values = implode(" ", $product_id);
+    //Query the db with the query string
+    return App::get('database')->where('products',  $values);
+  }
+  public static function getProductQTYArray(): array {
+
+    $qty = [];
+    foreach ($_SESSION['cart'] as $carts) {
+      //reverse the order of array so as to start with quantity
+      $carts = array_reverse($carts);
+      //remove the product_id from array
+      array_pop($carts);
+      //loop agaain to get the values
+      foreach ($carts as  $key => $value) {
+        //push the array into QTY
+        array_push($qty,  $value);
+      }
+    }
+    //initialse an empty array
+    $product_id = [];
+    //loop the session['cart] 
+    foreach ($_SESSION['cart'] as $session) {
+      //after looping remove Quantity
+      array_pop($session);
+      foreach ($session as $key => $value) {
+        //push the remaining product id
+        array_push($product_id,  $value);
+      }
+    }
+
+    //finally combine the arrays to get the full array
+    return array_combine($product_id, $qty);
+  }
+  //getthe qty from the above array
+  public static function getQTY($product_id) {
+
+    $qtyPctArr = self::getProductQTYArray();
+    //check if the key exists in array
+    if (array_key_exists($product_id, $qtyPctArr)) {
+      return $qtyPctArr[$product_id];
+    }
+  }
+
+
+  public static function getSalesDetails(): array {
+
+    $products = self::getProductForSale();
+   // $quantity = self::getQTY();
+
+    //perform calculations for the data to be inserted in sales
+    $seller_id = (int)$products['seller_id'];
+    $date = date("Y-m-d h:i:s");
+    $units_sold = (int)self::getQTY($products['product_id']);
+    $amount_made =  (int)$units_sold * (int)$products['product_price'];
+    $no_of_sales = $units_sold * $amount_made;
+
+
+
+    //initialise and fill in the array to be returned
+    $saleDetails = [
       'seller_id' => $seller_id,
       'date' => $date,
       'amount_made' => floatval($amount_made),
       'units_sold' => $units_sold,
       'no_of_sales' => $no_of_sales
     ];
-   
-    return $saleDetail;
+
+    return $saleDetails;
   }
 
 
   //get the products details form the form
-  public static function getProduct() {
+  public static function getProduct(): array {
 
     //from the form
     $seller_id =  htmlspecialchars((int)$_POST['seller_id']);

@@ -15,11 +15,9 @@ class ProductsController{
    public function addProductsStore(){
     //insert into db
     App::get('database')->insert('products', Request::getProduct());
-    
-        $header = 'Add Product';
+     
         $message = 'Successfully uploaded a new product';
-        return view('add-products',[
-            'header' => $header,
+        return view('add-products',[ 
             'message' => $message  
         ]);
    }
