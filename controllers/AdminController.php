@@ -17,6 +17,8 @@ class AdminController {
     $AprilSales = App::get('database')->MonthySales('2021-04-01 00:00:00', '2021-04-30 00:00:00');
     $MaySales = App::get('database')->MonthySales('2021-05-01 00:00:00', '2021-05-31 00:00:00');
     $JuneSales = App::get('database')->MonthySales('2021-06-01 00:00:00', '2021-06-30 00:00:00');
+    $BestSellers = App::get('database')->BestSellers();
+ 
     
  
     return view('admin', [
@@ -24,7 +26,8 @@ class AdminController {
       'MarchSales' => (int)$MarchSales["NumberOfSales"],
       'AprilSales' => (int)$AprilSales["NumberOfSales"],
       'MaySales' => (int)$MaySales["NumberOfSales"],
-      'JuneSales' => (int)$JuneSales["NumberOfSales"]
+      'JuneSales' => (int)$JuneSales["NumberOfSales"],
+      'BestSeller' => $BestSellers
     ]);
   }
   /**

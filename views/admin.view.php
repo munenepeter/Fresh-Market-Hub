@@ -16,21 +16,24 @@
       <div class="w-1/3 text-center py-8">
         <div class="border-r">
           <div class="text-grey-darker mb-2">
-            <span class="text-3xl align-top">$</span>
-            <span class="text-5xl"><?= $MaySales ?></span>
-            <span class="text-3xl align-top">%</span>
+            <span class="text-3xl align-top">Ksh</span>
+            <span class="text-5xl"><?= number_format($MaySales, 2, '.', ',') ?></span>
+
           </div>
           <div class="text-sm uppercase text-grey tracking-wide">
             May Sales
           </div>
         </div>
       </div>
-      <div class="w-1/3 text-center py-8">
-        <div class="border-r">
-          <div class="text-grey-darker mb-2">
-            <span class="text-3xl align-top"><span class="text-green align-top">+</span>$</span>
-            <span class="text-5xl"><?= $AprilSales ?></span>
-            <span class="text-3xl align-top">%</span>
+      <div class="w-1/3 text-center py-8 ">
+        <div class="border-r text-center items-center">
+          <div class="ml-20 flex text-grey-darker mb-2">
+            <span class="text-3xl align-top">Ksh</span>
+            <span class="text-5xl"><?= number_format($AprilSales, 2, '.', ',') ?></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-red-600 align-top h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+            </svg>
+
           </div>
           <div class="text-sm uppercase text-grey tracking-wide">
             April Sales
@@ -39,10 +42,12 @@
       </div>
       <div class="w-1/3 text-center py-8">
         <div>
-          <div class="text-grey-darker mb-2">
-            <span class="text-3xl align-top"><span class="text-green align-top">+</span></span>
-            <span class="text-5xl"><?= $MarchSales ?></span>
-            <span class="text-3xl align-top">%</span>
+          <div class="ml-16 flex  text-grey-darker mb-2">
+            <span class="text-3xl align-top">Ksh</span>
+            <span class="text-5xl"><?= number_format($MarchSales, 2, '.', ',') ?></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-green-600 align-top h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+            </svg>
           </div>
           <div class="text-sm uppercase text-grey tracking-wide">
             March Sales
@@ -66,11 +71,12 @@
           </div>
         </div>
         <div class="flex-grow flex px-6 py-6 text-grey-darker items-center border-b -mx-4">
-          <div class="w-2/5 xl:w-1/4 px-4 flex items-center">
-            <div class="rounded-full bg-orange inline-flex mr-3">
-
+          <div class="w-2/5 xl:w-1/4 px-2 flex items-center">
+            <div class="flex-shrink-0 h-10 w-10 mr-2">
+            <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
+                    <?= $BestSeller[0]['username'] ?>&background=random" alt="">
             </div>
-            <span class="text-lg">Name</span>
+            <span class="text-lg capitalize"><?= $BestSeller[0]['username'] ?></span>
           </div>
           <div class="hidden md:flex lg:hidden xl:flex w-1/4 px-4 items-center">
             <div class="bg-blue-300 h-2 rounded-full flex-grow mr-2"></div>
@@ -79,22 +85,23 @@
           <div class="flex w-3/5 md:w/12">
             <div class="w-1/2 px-4">
               <div class="text-right">
-                6000
+              <?= number_format($BestSeller[0]['Sales'], 0, '.', ',') ?>
               </div>
             </div>
             <div class="w-1/2 px-4">
               <div class="text-right text-grey">
-                Ksh 21.28
+                Ksh <?=  number_format($BestSeller[0]['Amount'], 2, '.', ',') ?>
               </div>
             </div>
           </div>
         </div>
         <div class="flex-grow flex px-6 py-6 text-grey-darker items-center border-b -mx-4">
-          <div class="w-2/5 xl:w-1/4 px-4 flex items-center">
-            <div class="rounded-full bg-grey inline-flex mr-3">
-
+          <div class="w-2/5 xl:w-1/4 px-2 flex items-center">
+          <div class="flex-shrink-0 h-10 w-10 mr-2">
+            <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
+                    <?= $BestSeller[1]['username'] ?>&background=random" alt="">
             </div>
-            <span class="text-lg">Name 2</span>
+            <span class="text-lg capitalize"><?= $BestSeller[1]['username'] ?></span>
           </div>
           <div class="hidden md:flex lg:hidden xl:flex w-1/4 px-4 items-center">
             <div class="bg-green-300 h-2 w-8 rounded-full mr-2"></div>
@@ -103,22 +110,26 @@
           <div class="flex w-3/5 md:w/12">
             <div class="w-1/2 px-4">
               <div class="text-right">
-                2000
+              <?= number_format($BestSeller[1]['Sales'], 0, '.', ',')  ?>
               </div>
             </div>
             <div class="w-1/2 px-4">
               <div class="text-right text-grey">
-                Ksh 100.00
+                Ksh <?=  number_format($BestSeller[1]['Amount'], 2, '.', ',') ?>
               </div>
             </div>
           </div>
         </div>
         <div class="flex-grow flex px-6 py-6 text-grey-darker items-center border-b -mx-4">
-          <div class="w-2/5 xl:w-1/4 px-4 flex items-center">
-            <div class="rounded-full bg-indigo inline-flex mr-3">
-
+          <div class="w-2/5 xl:w-1/4 px-2 flex items-center">
+            <div class="flex-shrink-0 h-10 w-10 mr-2">
+            <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
+                    <?= $BestSeller[2]['username'] ?>&background=random" alt="">
             </div>
-            <span class="text-lg">Name 3</span>
+            <span class="text-lg capitalize"><?=
+            strlen($BestSeller[2]['username'] ) > 9 ? substr($BestSeller[2]['username'] , 0, 9) . " " : $BestSeller[2]['username'] ;
+          
+             ?></span>
           </div>
           <div class="hidden md:flex lg:hidden xl:flex w-1/4 px-4 items-center">
             <div class="bg-indigo-300 h-2 w-6 rounded-full mr-2"></div>
@@ -127,19 +138,23 @@
           <div class="flex w-3/5 md:w/12">
             <div class="w-1/2 px-4">
               <div class="text-right">
-                500
+              <?= number_format($BestSeller[2]['Sales'], 0, '.', ',')  ?>
               </div>
             </div>
             <div class="w-1/2 px-4">
               <div class="text-right text-grey">
-                Ksh 40.00
+                Ksh <?=  number_format($BestSeller[2]['Amount'], 2, '.', ',')  ?>
               </div>
             </div>
           </div>
         </div>
         <div class="px-6 py-4">
           <div class="text-center text-grey">
-            Total Balance &asymp; Ksh 2321
+            <?php
+            $Total = (int)$BestSeller[0]['Amount'] + (int)$BestSeller[1]['Amount'] + (int)$BestSeller[2]['Amount'] 
+            
+            ?>
+            Total Balance &asymp; Ksh <?=  number_format($Total, 2, '.', ',') ?>
           </div>
         </div>
       </div>
@@ -148,7 +163,7 @@
       <div class="bg-white border-t border-b sm:rounded sm:border shadow">
         <div class="border-b">
           <div class="flex justify-between px-6 -mb-px">
-            <h3 class="text-blue-dark py-4 font-normal text-lg">Recent Activity</h3>
+            <h3 class="text-blue-900 py-4 font-normal text-lg">Recent Activity</h3>
           </div>
         </div>
         <div>

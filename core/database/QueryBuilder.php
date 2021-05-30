@@ -136,6 +136,29 @@ class QueryBuilder {
 
     return $statement->fetch(\PDO::FETCH_ASSOC);
   }
+  public function BestSellers() {
+    //select partid,sum(sales)
+
+    $sql = "SELECT 
+      seller_id, 
+      username,
+      SUM(`no_of_sales`) AS Sales,
+      SUM(`amount_made`) AS Amount, 
+      SUM(`no_of_sales`) AS `NumberOfSales`
+    FROM `sales` 
+    INNER JOIN `users`
+    ON seller_id = users.id
+    GROUP BY seller_id 
+    ORDER BY Sales DESC;
+    ";
+
+    $statement = $this->pdo->prepare($sql);
+
+    $statement->execute();
+
+    return $statement->fetchAll(\PDO::FETCH_ASSOC);
+  }
+
 
   public function session() {
 
