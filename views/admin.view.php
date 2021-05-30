@@ -7,9 +7,12 @@
 
 
     <?php
+    $Total = (int)$BestSeller[0]['Amount'] + (int)$BestSeller[1]['Amount'] + (int)$BestSeller[2]['Amount'];
 
-    // $users;
-    //  dump($users);
+    function getPercent($Total, $One) {
+      $percent = ($One / $Total) * 100;
+      return   number_format($percent, 0, '.', ',');
+    } 
 
     ?>
     <div class="flex">
@@ -70,52 +73,57 @@
             </div>
           </div>
         </div>
+        
         <div class="flex-grow flex px-6 py-6 text-grey-darker items-center border-b -mx-4">
           <div class="w-2/5 xl:w-1/4 px-2 flex items-center">
             <div class="flex-shrink-0 h-10 w-10 mr-2">
-            <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
+              <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
+                    <?= $BestSeller[2]['username'] ?>&background=random" alt="">
+            </div>
+            <span class="text-lg capitalize"><?=
+                                              strlen($BestSeller[2]['username']) > 9 ? substr($BestSeller[2]['username'], 0, 9) . " " : $BestSeller[2]['username'];
+
+                                              ?></span>
+          </div>
+          <div class="hidden md:flex lg:hidden xl:flex w-1/4 px-4 items-center">
+          <div class="bg-blue-300 h-2 w-8 rounded-full flex-grow mr-2"></div> 
+   
+            <?= getPercent($Total, $BestSeller[2]['Amount'])?>%
+          </div>
+          <div class="flex w-3/5 md:w/12">
+            <div class="w-1/2 px-4">
+              <div class="text-right">
+                <?= number_format($BestSeller[2]['Sales'], 0, '.', ',')  ?>
+              </div>
+            </div>
+            <div class="w-1/2 px-4">
+              <div class="text-right text-grey">
+                Ksh <?= number_format($BestSeller[2]['Amount'], 2, '.', ',') ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-grow flex px-6 py-6 text-grey-darker items-center border-b -mx-4">
+          <div class="w-2/5 xl:w-1/4 px-2 flex items-center">
+            <div class="flex-shrink-0 h-10 w-10 mr-2">
+              <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
                     <?= $BestSeller[0]['username'] ?>&background=random" alt="">
             </div>
             <span class="text-lg capitalize"><?= $BestSeller[0]['username'] ?></span>
           </div>
           <div class="hidden md:flex lg:hidden xl:flex w-1/4 px-4 items-center">
-            <div class="bg-blue-300 h-2 rounded-full flex-grow mr-2"></div>
-            100%
+          <div class="bg-green-300 h-2 w-8  rounded-full mr-2"></div> 
+            <?=getPercent($Total, $BestSeller[0]['Amount'])?>%
           </div>
           <div class="flex w-3/5 md:w/12">
             <div class="w-1/2 px-4">
               <div class="text-right">
-              <?= number_format($BestSeller[0]['Sales'], 0, '.', ',') ?>
+                <?= number_format($BestSeller[0]['Sales'], 0, '.', ',') ?>
               </div>
             </div>
             <div class="w-1/2 px-4">
               <div class="text-right text-grey">
-                Ksh <?=  number_format($BestSeller[0]['Amount'], 2, '.', ',') ?>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flex-grow flex px-6 py-6 text-grey-darker items-center border-b -mx-4">
-          <div class="w-2/5 xl:w-1/4 px-2 flex items-center">
-          <div class="flex-shrink-0 h-10 w-10 mr-2">
-            <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
-                    <?= $BestSeller[1]['username'] ?>&background=random" alt="">
-            </div>
-            <span class="text-lg capitalize"><?= $BestSeller[1]['username'] ?></span>
-          </div>
-          <div class="hidden md:flex lg:hidden xl:flex w-1/4 px-4 items-center">
-            <div class="bg-green-300 h-2 w-8 rounded-full mr-2"></div>
-            60%
-          </div>
-          <div class="flex w-3/5 md:w/12">
-            <div class="w-1/2 px-4">
-              <div class="text-right">
-              <?= number_format($BestSeller[1]['Sales'], 0, '.', ',')  ?>
-              </div>
-            </div>
-            <div class="w-1/2 px-4">
-              <div class="text-right text-grey">
-                Ksh <?=  number_format($BestSeller[1]['Amount'], 2, '.', ',') ?>
+                Ksh <?= number_format($BestSeller[0]['Amount'], 2, '.', ',') ?>
               </div>
             </div>
           </div>
@@ -123,38 +131,32 @@
         <div class="flex-grow flex px-6 py-6 text-grey-darker items-center border-b -mx-4">
           <div class="w-2/5 xl:w-1/4 px-2 flex items-center">
             <div class="flex-shrink-0 h-10 w-10 mr-2">
-            <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
-                    <?= $BestSeller[2]['username'] ?>&background=random" alt="">
+              <img class="h-10 w-10 rounded-full" src="https://ui-avatars.com/api/?name=
+                    <?= $BestSeller[1]['username'] ?>&background=random" alt="">
             </div>
-            <span class="text-lg capitalize"><?=
-            strlen($BestSeller[2]['username'] ) > 9 ? substr($BestSeller[2]['username'] , 0, 9) . " " : $BestSeller[2]['username'] ;
-          
-             ?></span>
+            <span class="text-lg capitalize"><?= $BestSeller[0]['username'] ?></span>
           </div>
           <div class="hidden md:flex lg:hidden xl:flex w-1/4 px-4 items-center">
             <div class="bg-indigo-300 h-2 w-6 rounded-full mr-2"></div>
-            10%
+            <?=getPercent($Total, $BestSeller[1]['Amount'])?>%
           </div>
           <div class="flex w-3/5 md:w/12">
             <div class="w-1/2 px-4">
               <div class="text-right">
-              <?= number_format($BestSeller[2]['Sales'], 0, '.', ',')  ?>
+                <?= number_format($BestSeller[1]['Sales'], 0, '.', ',')  ?>
               </div>
             </div>
             <div class="w-1/2 px-4">
               <div class="text-right text-grey">
-                Ksh <?=  number_format($BestSeller[2]['Amount'], 2, '.', ',')  ?>
+                Ksh <?= number_format($BestSeller[1]['Amount'], 2, '.', ',')  ?>
               </div>
             </div>
           </div>
         </div>
         <div class="px-6 py-4">
           <div class="text-center text-grey">
-            <?php
-            $Total = (int)$BestSeller[0]['Amount'] + (int)$BestSeller[1]['Amount'] + (int)$BestSeller[2]['Amount'] 
-            
-            ?>
-            Total Balance &asymp; Ksh <?=  number_format($Total, 2, '.', ',') ?>
+
+            Total Balance &asymp; Ksh <?= number_format($Total, 2, '.', ',') ?>
           </div>
         </div>
       </div>
