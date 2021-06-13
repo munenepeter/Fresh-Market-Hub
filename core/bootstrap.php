@@ -4,36 +4,37 @@ use App\Core\App;
 use App\Core\Database\Connection;
 use App\Core\Database\QueryBuilder;
 
-
-//Require the App Class -> binder of the most important parts like the DB
-
-
-//Bind the config file(The database credentials)
+/**Require the App Class -> binder of the most important parts like the DB
+ * Bind the config file(The database credentials)
+*/
 App::bind('config', require 'config.php');
 
 //session_start
 session_start();
 
-//Bind the Database credentials and connect to the app
-// Bind the requred database file above to 
-//an instance of the connection 
+/**
+ *Bind the Database credentials and connect to the app
+ *Bind the requred database file above to 
+ *an instance of the connection
+*/
 
 App::bind('database', new QueryBuilder(
   Connection::make(App::get('config')['database'])
 ));
+ 
+/**
+ * -- Custom Helper functions
+*/
 
-
-
-//Custom Helper functions
 /**
  * View Helper.
  *
- * @param string $product_name name of file to be redirected
- * @var data[] $data data to be sent with the redirection
+ * @param string $name name of file to be redirected to
+ * @param array data[] data to be sent with the redirection
  * 
- * @return file require the requested file
+ * @return file requested file to be redirected to
  */
-function view($name, $data = []) {
+function view(String $name, Array $data = []) {
 
   extract($data);
 
@@ -42,10 +43,10 @@ function view($name, $data = []) {
 /**
  * Auth View Helper.
  *
- * @param string $product_name name of file to be redirected
- * @var data[] $data data to be sent with the redirection
+ * @param string $name name of file to be redirected to
+ * @param array data[] data to be sent with the redirection
  * 
- * @return file require the requested file
+ * @return file requested file to be redirected to
  */
 function viewAuth($name, $data = []) {
   extract($data);
@@ -67,8 +68,7 @@ function dd($variable) {
 
 function AuthCheck() {
   if (isset($_SESSION['id'])) {
-    if ($_SESSION['type'] ==  0 || $_SESSION['type'] == 1 || $_SESSION['type'] == 2) {
-
+    if ($_SESSION['type'] ==  0 || $_SESSION['type'] == 1 || $_SESSION['type'] == 2) { 
       return true;
     }
   }
@@ -76,8 +76,7 @@ function AuthCheck() {
 
 function AuthAdminCheck() {
   if (isset($_SESSION['id'])) {
-    if ($_SESSION['type'] ==  0) {
-
+    if ($_SESSION['type'] ==  0) { 
       return true;
     }
   }
