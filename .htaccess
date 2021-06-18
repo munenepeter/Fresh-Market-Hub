@@ -1,4 +1,1 @@
-ewriteEngine On
-RewriteCond %{HTTP_HOST} example.com$ [NC]
-RewriteCond %{HTTP_HOST} !folder1
-RewriteRule ^(.*)$ http://example.com/folder1/$1 [R=301,L]
+#will add the necessary rerouting code for Apache or nginx
