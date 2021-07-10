@@ -120,13 +120,10 @@
   						<div @click="open = !open">
   						 <?='<img class="h-8 w-8 rounded-full" src="https://ui-avatars.com/api/?name=' .  $_SESSION['name'] . '&background=random&length=1" alt="' .  $_SESSION['name'] . 'Profile Image">'?> 
   						</div>
-						         
-
-
   						<div x-show.transition="open" @click.away="open = false"
   							class="absolute top-0 mt-12 right-0 w-48 bg-white py-2 shadow-md border border-gray-100 rounded-lg z-40">
 
-  							<a href="#"
+  							<a href="sign-out"
   								class="block px-4 py-2 text-gray-600 hover:bg-gray-100 hover:text-blue-600">Sign
   								Out</a>
   						</div>

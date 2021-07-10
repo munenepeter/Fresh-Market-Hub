@@ -10,8 +10,8 @@
 	</div>
 
 	<div class="bg-yellow-200 mb-10 p-6 rounded-lg shadow">
-		<div class="flex">
-			<div class="w-1/3 text-center py-8 ">
+		<div class="bg-yellow-50 flex">
+			<div class=" w-1/3 text-center py-8 ">
 				<div class="border-r border-green-400 text-center items-center">
 					<div class="ml-20 flex text-grey-darker mb-2">
 						<span class="text-3xl align-top">Ksh</span>
