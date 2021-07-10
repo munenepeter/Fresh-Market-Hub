@@ -42,10 +42,7 @@ class AuthController {
 
             header('location: products');
 
-            exit();
-
-             header('location: products');
-            exit();
+            exit(); 
         } else {
 
             $msg = "Entered email already exists!";

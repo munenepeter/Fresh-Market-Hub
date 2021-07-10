@@ -35,7 +35,7 @@ class QueryBuilder {
       throw new \Exception("Something is up with your Select {$statement}!");
     }
 
-    return $statement->fetch(\PDO::FETCH_ASSOC);
+    return $statement->fetchAll(\PDO::FETCH_ASSOC);
   }
   //////////SELECT WITH A WHERE CLAUSE
   //SELECT * FROM `products` WHERE `product_id` = 19 OR `product_id` = 2 OR `product_id` = 3 OR `product_id` = 4
@@ -110,7 +110,10 @@ class QueryBuilder {
     $statement->bindParam(':username', $username);
     $statement->bindParam(':password', $password);
 
-    $statement->execute();
+     if (!$statement->execute()) {
+
+      throw new \Exception("Something is up with your Select {$statement}!");
+    }
 
     $results = [];
 
@@ -134,7 +137,10 @@ class QueryBuilder {
 
     $statement = $this->pdo->prepare($sql);
 
-    $statement->execute();
+    if (!$statement->execute()) {
+
+      throw new \Exception("Something is up with your Select {$statement}!");
+    }
 
     return $statement->fetchAll(\PDO::FETCH_CLASS,  "App\\Core\\{$intoClass}");
   }
@@ -148,7 +154,10 @@ class QueryBuilder {
 
     $statement = $this->pdo->prepare($sql);
 
-    $statement->execute();
+     if (!$statement->execute()) {
+
+      throw new \Exception("Something is up with your Select {$statement}!");
+    }
 
     return $statement->fetch(\PDO::FETCH_ASSOC);
   }
@@ -170,12 +179,30 @@ class QueryBuilder {
 
     $statement = $this->pdo->prepare($sql);
 
-    $statement->execute();
+    if (!$statement->execute()) {
+
+      throw new \Exception("Something is up with your Select {$statement}!");
+    }
 
     return $statement->fetchAll(\PDO::FETCH_ASSOC);
   }
 
 
+  public function selectAllInvoices($table) {
+
+     $sql = "SELECT * FROM `{$table}`
+    INNER JOIN `users`
+    ON user_id = users.id";
+
+    $statement = $this->pdo->prepare($sql);
+
+    if (!$statement->execute()) {
+
+      throw new \Exception("Something is up with your Select {$statement}!");
+    }
+
+    return $statement->fetchAll(\PDO::FETCH_ASSOC);
+  }
   public function session() {
 
     if (isset($_SESSION['login'])) {

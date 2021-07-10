@@ -69,7 +69,7 @@ $router->post('email', 'SendEmailController@index');
 
 
 //for testing purposes
-$router->get('admin-test', 'AdminController@admin_new');
+ 
 
 $router->post('', 'PagesController@addtocart');
 $router->post('/', 'PagesController@addtocart');
