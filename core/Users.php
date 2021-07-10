@@ -18,4 +18,7 @@ class Users {
   public $date;
   public $amount_made;
   public $units_sold;
+  // public $invoice_no;
+  // //public $date;
+  // public $status;
 }

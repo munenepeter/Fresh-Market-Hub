@@ -43,7 +43,20 @@ class AdminController {
     echo $this->parameter;
   }
   public function admin_new(){
-    $users = App::get('database')->allUserDetails('Users'); 
-    return view('admin-test',['users' => $users]);  
+    $invoices = App::get('database')->selectAllWithoutClass('invoices');
+    $users = App::get('database')->allUserDetails('Users');  
+    $MarchSales = App::get('database')->MonthySales('2021-03-01 00:00:00', '2021-03-31 00:00:00');
+    $AprilSales = App::get('database')->MonthySales('2021-04-01 00:00:00', '2021-04-30 00:00:00');
+    $MaySales = App::get('database')->MonthySales('2021-05-01 00:00:00', '2021-05-31 00:00:00');
+    $JuneSales = App::get('database')->MonthySales('2021-06-01 00:00:00', '2021-06-30 00:00:00');
+    
+    return view('admin-test',[
+      'invoices' => $invoices,
+      'users' => $users,
+      'MarchSales' => (int)$MarchSales["NumberOfSales"],
+      'AprilSales' => (int)$AprilSales["NumberOfSales"],
+      'MaySales' => (int)$MaySales["NumberOfSales"],
+      'JuneSales' => (int)$JuneSales["NumberOfSales"]
+    ]);  
   }
 }

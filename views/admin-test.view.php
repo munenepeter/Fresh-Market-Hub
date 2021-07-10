@@ -15,7 +15,24 @@
 				<div class="border-r border-green-400 text-center items-center">
 					<div class="ml-20 flex text-grey-darker mb-2">
 						<span class="text-3xl align-top">Ksh</span>
-						<span class="text-5xl"><?= number_format(78989, 0, '.', ',') ?></span>
+						<span class="text-5xl"><?= number_format($MaySales, 0, '.', ',') ?></span>
+						<svg xmlns="http://www.w3.org/2000/svg" class="text-green-600 align-top h-6 w-6" fill="none"
+							viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M17 13l-5 5m0 0l-5-5m5 5V6" />
+						</svg>
+
+					</div>
+					<div class="text-sm uppercase text-grey tracking-wide">
+						April Sales
+					</div>
+				</div>
+			</div>
+			<div class="w-1/3 text-center py-8 ">
+				<div class="border-r border-green-400 text-center items-center">
+					<div class="ml-20 flex text-grey-darker mb-2">
+						<span class="text-3xl align-top">Ksh</span>
+						<span class="text-5xl"><?= number_format($AprilSales, 0, '.', ',') ?></span>
 						<svg xmlns="http://www.w3.org/2000/svg" class="text-red-600 align-top h-6 w-6" fill="none"
 							viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -32,24 +49,7 @@
 				<div class="border-r border-green-400 text-center items-center">
 					<div class="ml-20 flex text-grey-darker mb-2">
 						<span class="text-3xl align-top">Ksh</span>
-						<span class="text-5xl"><?= number_format(78989, 0, '.', ',') ?></span>
-						<svg xmlns="http://www.w3.org/2000/svg" class="text-red-600 align-top h-6 w-6" fill="none"
-							viewBox="0 0 24 24" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M17 13l-5 5m0 0l-5-5m5 5V6" />
-						</svg>
-
-					</div>
-					<div class="text-sm uppercase text-grey tracking-wide">
-						April Sales
-					</div>
-				</div>
-			</div>
-			<div class="w-1/3 text-center py-8 ">
-				<div class="border-r border-green-400 text-center items-center">
-					<div class="ml-20 flex text-grey-darker mb-2">
-						<span class="text-3xl align-top">Ksh</span>
-						<span class="text-5xl"><?= number_format(78989, 0, '.', ',') ?></span>
+						<span class="text-5xl"><?= number_format($MarchSales, 0, '.', ',') ?></span>
 						<svg xmlns="http://www.w3.org/2000/svg" class="text-red-600 align-top h-6 w-6" fill="none"
 							viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -222,9 +222,9 @@
 				</tr>
 
 			</thead>
-
+	<tbody class="bg-white divide-y divide-gray-200">
 			<?php foreach ($users as $user) : ?>
-			<tbody class="bg-white divide-y divide-gray-200">
+		
 				<tr>
 					<td class=" w-72 px-2 py-4 whitespace-nowrap">
 						<div class="flex items-center">

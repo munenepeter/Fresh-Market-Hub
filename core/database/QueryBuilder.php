@@ -23,6 +23,20 @@ class QueryBuilder {
 
     return $statement->fetchAll(\PDO::FETCH_CLASS,  "App\\Core\\{$intoClass}");
   }
+
+   //Select everything 
+
+  public function selectAllWithoutClass(String $table) {
+
+    $statement = $this->pdo->prepare("select * from {$table}");
+
+    if (!$statement->execute()) {
+
+      throw new \Exception("Something is up with your Select {$statement}!");
+    }
+
+    return $statement->fetch(\PDO::FETCH_ASSOC);
+  }
   //////////SELECT WITH A WHERE CLAUSE
   //SELECT * FROM `products` WHERE `product_id` = 19 OR `product_id` = 2 OR `product_id` = 3 OR `product_id` = 4
 
@@ -113,8 +127,10 @@ class QueryBuilder {
 
   public function allUserDetails($intoClass) {
 
-    $sql = "SELECT * FROM `users` INNER JOIN `userdetails`
-    ON users.id = userdetails.users_id INNER JOIN `sales` ON users.id = sales.seller_id";
+    $sql = "SELECT * FROM `users`
+    INNER JOIN `userdetails`
+    ON users.id = userdetails.users_id 
+    INNER JOIN `sales` ON users.id = sales.seller_id";
 
     $statement = $this->pdo->prepare($sql);
 
