@@ -71,6 +71,3 @@ strlen($product->product_description) > 50 ? substr($product->product_descriptio
 
 
 
-</body>
-
-</html>

@@ -1,9 +1,9 @@
 <?php require 'partials/head.php'; ?>
 
 
-<div class="m-2">
+<div class="mx-2">
 
-
+     
 
   <main>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-6">

@@ -103,6 +103,4 @@
     </div>
 </main>
 
-</body>
-
-</html>
+ 

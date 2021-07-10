@@ -148,6 +148,4 @@ if (isset($_POST['remove'])) {
   } ?>
 
 </div>
-</body>
-
-</html>
+ 

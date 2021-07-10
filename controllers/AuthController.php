@@ -30,7 +30,21 @@ class AuthController {
 
             $msg = "Successfull registered {$username}";
 
-            return viewAuth('login', ['msg' => $msg]);
+            $loggedUser = array('type'=> $type, 'username'=>$username, 'email'=>$email);
+            
+            session_start();
+
+            $_SESSION['login'] = true;
+            $_SESSION['id'] = (int)$loggedUser['id'];
+            $_SESSION['name'] = $loggedUser['username'];
+            $_SESSION['email'] = $loggedUser['email'];
+            $_SESSION['type'] = (int)$loggedUser['type'];
+
+            header('location: products');
+
+            exit();
+
+             header('location: products');
             exit();
         } else {
 

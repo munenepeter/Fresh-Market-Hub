@@ -20,7 +20,7 @@ class Connection {
 
             //Here you return the credentials stored in the config file
             return new \PDO(
-                $config['connection']. $config['port'] . ';dbname=' . $config['name'],
+                $config['connection']. ';dbname=' . $config['name'],
                 $config['username'],
                 $config['password'],
                 $config['options']

@@ -52,3 +52,8 @@
 <body class="antialiased bg-gray-200 text-gray-900 font-sans">
 
   <?php require 'nav.php'; ?>
+
+
+</body>
+
+</html> 

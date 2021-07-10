@@ -42,4 +42,8 @@ class AdminController {
     $this->parameter = Request::uriParameters();
     echo $this->parameter;
   }
+  public function admin_new(){
+    $users = App::get('database')->allUserDetails('Users'); 
+    return view('admin-test',['users' => $users]);  
+  }
 }
