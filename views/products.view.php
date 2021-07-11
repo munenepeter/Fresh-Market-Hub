@@ -70,16 +70,16 @@
                               if ($_SESSION['type'] === 1 || $_SESSION['type'] === 0) {
                                 echo '
                         <form action="/cart?action=Edit&id=' . $product->product_id . '" method="post">
-                        <a href="/edit" class="w-full text-sm focus:outline-none text-red-600 text-sm py-2 px-6 rounded-full border border-red-600 hover:bg-red-50 ">Edit </a>
+                        <a href="/edit" class="w-full  focus:outline-none text-red-600 text-sm py-2 px-6 rounded-full border border-red-600 hover:bg-red-50 ">Edit </a>
                         </form>
                         ';
                               } else {
                                 //If the user is a buyer display Add to cart button
-                                echo '<button type="submit" name="addtocart" class="w-full text-sm focus:outline-none text-blue-600 text-sm py-2 px-6 rounded-full border border-blue-600 hover:bg-blue-50 ">Add to Cart</button>';
+                                echo '<button type="submit" name="addtocart" class="w-full text-sm focus:outline-none text-blue-600  py-2 px-6 rounded-full border border-blue-600 hover:bg-blue-50 ">Add to Cart</button>';
                               }
                               // else if the user is not logged in dispaly the add to cart with a yellow bg
                             } else {
-                              echo '<button type="button" class="w-full text-sm focus:outline-none text-yellow-600 text-sm py-2 px-6 rounded-full border border-yellow-600 hover:bg-yellow-50  ">Add to Cart</button>';
+                              echo '<button type="button" class="w-full text-sm focus:outline-none text-yellow-600  py-2 px-6 rounded-full border border-yellow-600 hover:bg-yellow-50  ">Add to Cart</button>';
                             }
 
                             ?>
