@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Core\Exceptions\NOTFoundException;
+
 class Router {
 
     public static $routes = [
@@ -57,7 +59,7 @@ class Router {
             );
         }
 
-        throw new \Exception("There is no routes for this URI {$uri}");
+        throw new NOTFoundException("There is no routes for this URI {$uri}", 404);
     }
     protected function callAction($controller, $action) {
 

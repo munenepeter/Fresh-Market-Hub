@@ -4,12 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Error!</title>
+    <title>Error</title>
     <!-- Offline js files -->
-    <!-- <link rel="stylesheet" href="../../public/tailwindcss.css">
-    <script src="../../public/alpine.js" defer></script>
-    <script src="../../public/customform.js" defer></script> -->
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="../../public/css/tailwind.css">
 
 </head>
 
