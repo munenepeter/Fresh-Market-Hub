@@ -3,15 +3,11 @@
 namespace App\Controllers;
 
 use App\Core\App;
-use App\Core\Request;
-use App\Controllers\PagesController;
+use App\Core\Request; 
 
 class AdminController { 
 
-  protected $parameter;
-
-
-   
+  protected $parameter; 
   /**
    * editUser
    * Todo 
@@ -21,11 +17,14 @@ class AdminController {
    */
 
   public function editUser() {
+
     $this->parameter = Request::uriParameters();
+    
     echo $this->parameter;
   }
-  public function index(){
 
+  public function index(){
+      //check if the logged in user if he/she is admin
     if($_SESSION['type'] != 1){
 
       header('location: products');

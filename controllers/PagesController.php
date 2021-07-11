@@ -4,12 +4,18 @@ namespace App\Controllers;
 
 use App\Core\App;
 
-
 class PagesController {
+
     public $alert;
 
     public function home() {
-        //require 'core/ProductsInDB.php';
+
+        if (isset($_SESSION['login'])) {
+
+            header('location: products');
+
+            exit();
+        }
 
         $products = App::get('database')->selectAll('products', 'DbProducts');
 
@@ -20,7 +26,12 @@ class PagesController {
     }
     public function products() {
 
+        if (!$_SESSION['login']) {
 
+            header('location: home');
+
+            exit();
+        }
         $products = App::get('database')->selectAll('products', 'DbProducts');
 
         return view('products', [
@@ -36,6 +47,12 @@ class PagesController {
      * @return View
      */
     public function editProduct() {
+        if (!$_SESSION['login']) {
+
+            header('location: home');
+
+            exit();
+        }
         $products = App::get('database')->selectAll('products', 'DbProducts');
 
         return view('edit-product', [
@@ -44,7 +61,12 @@ class PagesController {
         ]);
     }
     public function users() {
+        if (!$_SESSION['login']) {
 
+            header('location: home');
+
+            exit();
+        }
 
         $users = App::get('database')->selectAll('users', 'App\\Core\\Users');
 
@@ -53,15 +75,15 @@ class PagesController {
             'users' => $users
         ]);
     }
-    public function register() {
+    // public function register() {
 
-        return viewAuth('register');
-    }
+    //     return viewAuth('register');
+    // }
 
-    public function signup() {
+    // public function signup() {
 
-        return viewAuth('login');
-    }
+    //     return viewAuth('login');
+    // }
 
     /**
      * addtocart
@@ -69,6 +91,12 @@ class PagesController {
      * @return void
      */
     public function addtocart() {
+        if (!$_SESSION['login']) {
+
+            header('location: home');
+
+            exit();
+        }
         //Check if add to cart has been pressed
         if (isset($_POST['addtocart'])) {
             //check if there is a session of cart
@@ -106,14 +134,19 @@ class PagesController {
         }
     }
     public function cart() {
+        if (!$_SESSION['login']) {
 
+            header('location: home');
+
+            exit();
+        }
         $products = App::get('database')->selectAll('products', 'DbProducts');
         $ProductQuantities = array_column($_SESSION['cart'], 'quantity');
         $product_id = array_column($_SESSION['cart'], 'product_id');
 
 
         $total = 0;
-        $qty= 0;
+        $qty = 0;
         $sellers = [];
 
         return view('cart', [
@@ -127,7 +160,12 @@ class PagesController {
         ]);
     }
     public function checkout() {
+        if (!$_SESSION['login']) {
 
+            header('location: home');
+
+            exit();
+        }
         $id = $_SESSION['id'];
         $user = App::get('database')->checkoutUser($id);
 
@@ -136,7 +174,12 @@ class PagesController {
         ]);
     }
     public function email() {
-        
+        if (!$_SESSION['login']) {
+
+            header('location: home');
+
+            exit();
+        }
         $id = $_SESSION['id'];
         $user = App::get('database')->checkoutUser($id);
         $products = App::get('database')->selectAll('products', 'DbProducts');
@@ -151,5 +194,4 @@ class PagesController {
             'user' => $user
         ]);
     }
-   
 }

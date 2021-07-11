@@ -8,6 +8,12 @@ use App\Core\Request;
 class SalesController {
 
     public function checkout() {
+        if (!$_SESSION['login']) {
+
+            header('location: home');
+
+            exit();
+        }
         //insert into db
         App::get('database')->insert('sales', Request::getSalesDetails());
 
@@ -21,7 +27,3 @@ class SalesController {
         ]);
     }
 }
-
-
-
-
