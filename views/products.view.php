@@ -28,12 +28,12 @@
                   <div class="card m-2 cursor-pointer border border-gray-200 bg-gray-200  rounded-lg h-96 ">
                     <div class="m-2 grid grid-cols-1 divide-y divide-blue-200">
                       <div class="justify-items-center h-36">
-                        <img name="product_image" class="w-full h-full rounded-lg" src="<?= $product->product_image; ?>" alt="<?= $product->product_name; ?> Image">
+                        <!-- <img name="product_image" class="w-full h-full rounded-lg" src="<//$product->product_image; ?>" alt="<// $product->product_name; ?> Image"> -->
 
                         <!-- 
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmv5AoOlBHko-pxoKMnok496blUtMhDmNS3g&usqp=CAU 
+                            https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmv5AoOlBHko-pxoKMnok496blUtMhDmNS3g&usqp=CAU 
                       -->
-                        <!-- <img name="product_image" class=" w-full h-full rounded-lg" src="<// '/public/images/' . $product->product_image; ?>" alt="<// $product->product_name; ?> Image"> -->
+                        <img name="product_image" class=" w-full h-full rounded-lg" src="<?=  '/public/images/' . $product->product_image; ?>" alt="<?=  $product->product_name; ?> Image">
                       </div>
                       <div class="">
                         <h2 name="product_name" class="text-lg mb-2 capitalize"><?= $product->product_name; ?>

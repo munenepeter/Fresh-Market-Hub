@@ -28,6 +28,8 @@ class ProductsController {
             exit();
         }
         //insert into db
+
+        //dd(Request::getProduct());
         App::get('database')->insert('products', Request::getProduct());
 
         $message = 'Successfully uploaded a new product';

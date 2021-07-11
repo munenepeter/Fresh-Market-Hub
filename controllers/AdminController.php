@@ -25,7 +25,7 @@ class AdminController {
 
   public function index(){
       //check if the logged in user if he/she is admin
-    if($_SESSION['type'] != 1){
+    if($_SESSION['type'] != 0){
 
       header('location: products');
       exit();
