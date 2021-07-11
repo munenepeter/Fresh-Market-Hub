@@ -140,6 +140,7 @@ class PagesController {
 
             exit();
         }
+        if(isset($_SESSION['cart'])){
         $products = App::get('database')->selectAll('products', 'DbProducts');
         $ProductQuantities = array_column($_SESSION['cart'], 'quantity');
         $product_id = array_column($_SESSION['cart'], 'product_id');
@@ -158,6 +159,10 @@ class PagesController {
             'sellers' => $sellers
 
         ]);
+        }else{
+          return view('cart');  
+        }
+       
     }
     public function checkout() {
         if (!$_SESSION['login']) {

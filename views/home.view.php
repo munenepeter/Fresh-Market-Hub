@@ -8,12 +8,12 @@
       <div class="mt-48 mb-5 sm:mb-10">
         <!-- bg-gradient-to-r from-transparent  to-green-300  -->
         <h1
-          class="inline decoration-clone bg-gradient-to-r from-transparent  to-blue-600 p-2 text-green-100 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-white font-bold leading-tight">
+          class="inline decoration-clone bg-gradient-to-r from-transparent  to-blue-600 p-2 text-green-100 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center  font-bold leading-tight">
           Your online grocery store</h1>
       </div>
       <div class="flex justify-center items-center mt-10 sm:mb-20">
         <a
-          class="hover:text-blue-900 hover:bg-blue-200 hover:border-blue-300 border border-blue-500 bg-blue-700 transition duration-150 ease-in-out focus:outline-none rounded text-blue-100 px-8 py-3 sm:px-8  rounded-full  sm:py-3 text-sm">Sign
+          class="hover:text-blue-900 hover:bg-blue-200 hover:border-blue-300 border border-blue-500 bg-blue-700 transition duration-150 ease-in-out focus:outline-none text-blue-100 px-8 py-3 sm:px-8  rounded-full  sm:py-3 text-sm">Sign
           up</a>
 
       </div>

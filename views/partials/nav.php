@@ -1,6 +1,3 @@
-<?php
-
-use App\Core\Request; ?>
 
 <header class=" bg-blue-400 border-b md:flex md:items-center md:justify-between p-4 pb-0 shadow-lg md:pb-4 ">
   <div class="flex items-center justify-between mb-4 md:mb-0">
@@ -124,11 +121,6 @@ use App\Core\Request; ?>
     </ul>
   </nav>
 </header>
-<!-- <header class="bg-gray-100 shadow">
-  <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-3xl capitalize font-bold text-gray-900">
-      <?php Request::uri() ?>
-    </h1>
-
-  </div>
-</header> -->
+ 
+   
+  

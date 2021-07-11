@@ -1,3 +1,10 @@
+
+<?php
+
+use App\Core\Request;
+  
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +16,8 @@
  <link rel="stylesheet" href="../../public/css/tailwind.css">
 
   <!-- Online css files -->
-  <title> </title>
+  <title>
+ <?= 'Fresh Market Hub | ' . Request::uri() ?>  </title>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
   <style>
