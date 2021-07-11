@@ -1,0 +1,24 @@
+{
+  "name": "fresh-market-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munenepeter/Fresh-Market-Hub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/munenepeter/Fresh-Market-Hub/issues"
+  },
+  "homepage": "https://github.com/munenepeter/Fresh-Market-Hub#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.3.0",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4"
+  }
+}
