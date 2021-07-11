@@ -4,6 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
+	 <link rel="icon" type="image/png"  href="../../public/assests/apple-icon-114x114.png">
+  <link rel="manifest" href="../../public/assests/manifest.json">
 	<title>  <?= $code; ?> </title>
 	<!-- Offline js files -->
 	<link rel="stylesheet" href="../../public/css/tailwind.css">
