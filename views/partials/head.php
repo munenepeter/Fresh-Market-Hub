@@ -12,9 +12,6 @@
   <title> </title>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-  <!-- font -->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Sansita&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Sansita', sans-serif;

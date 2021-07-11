@@ -11,6 +11,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Order Email</title>
 
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sansita&display=swap" rel="stylesheet">
   <style type="text/css">
     @media only screen and (min-width: 520px) {
       .u-row {

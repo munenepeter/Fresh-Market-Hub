@@ -6,20 +6,9 @@
   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   	<!-- Offline css files -->
-  	<!-- <link rel="stylesheet" href="../../public/tailwindcss.css">
-    <link rel="stylesheet" href="../../public/custom-forms.css"> -->
-
-  	<!-- Online css files -->
-  	<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/css/custom-forms.css">
-  	<title> </title>
-  	<!-- Offline js files -->
-
-  	<!-- <script src="../../public/alpine.js" defer></script>
-    <script src="../../public/customform.js" defer></script> -->
-  	<!-- Online js files -->
-
-  	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/custom-forms@0.2.1/src/index.min.js" defer></script>
+   
+	<link rel="stylesheet" href="../../public/css/tailwind.css">
+	<title>Admin Dashboard </title> 
   	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
   	<!-- font -->
@@ -86,7 +75,7 @@
   			<div class="px-4 md:px-8 py-2 h-16 flex justify-between items-center shadow-sm bg-white">
   				<div class="flex items-center w-2/3">
   					<input
-  						class="bg-gray-200 focus:outline-none focus:shadow-outline focus:bg-white border border-transparent focus:border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal hidden md:block placeholder-gray-700 mr-10"
+  						class="bg-gray-200 focus:outline-none focus:shadow-outline focus:bg-white border border-transparent focus:border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal  md:block placeholder-gray-700 mr-10"
   						type="text" placeholder="Search...">
 
   					<div class="p-2 rounded-full hover:bg-gray-200 cursor-pointer md:hidden"
