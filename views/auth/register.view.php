@@ -6,12 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Offline js files -->
-    <!-- <link rel="stylesheet" href="../../public/tailwindcss.css">
-    <script src="../../public/alpine.js" defer></script>
-    <script src="../../public/customform.js" defer></script> -->
-
-
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="../../public/css/tailwind.css">
     <title>Register</title>
 </head>
 
