@@ -3,12 +3,15 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="icon" type="image/png" href="../../public/assests/apple-icon-114x114.png">
+    <link rel="manifest" href="../../public/assests/manifest.json">
     <meta name="viewport" content="width=device-width">
     <title>Login</title>
     <!-- Offline js files -->
     <link rel="stylesheet" href="../../public/css/tailwind.css">
 
 </head>
+
 <body class="bg-blue-50">
     <div class="flex items-center justify-center h-screen">
         <div class="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
@@ -64,7 +67,7 @@
                 </p>
             </form>
         </div>
-    </div> 
+    </div>
 
 </body>
 
