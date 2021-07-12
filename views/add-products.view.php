@@ -38,7 +38,7 @@
                                                 <input type="text" name="quantity" id="quantity" class="mt-1 py-2 px-4  focus:ring-blue-500 focus:border-blue-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" placeholder="How much of the product do you have?">
                                             </div>
 
-                                            
+
                                         </div>
                                         <div>
                                             <label for="product-decsription" class="block text-sm font-medium text-gray-700">
@@ -66,12 +66,12 @@
                                                     <div class="flex text-sm text-gray-600">
                                                         <label for="product-image" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500" for="product-image" x-data="{ files: null }">
                                                             <span>Upload an Image</span>
-                                                            <input type="file" class="sr-only" x-on:change="files = Object.values($event.target.files)" id="product-image"   name="product-image">
-                                                             <span class="text-red-600" x-text="files ? files.map(file => file.name).join(', ') : ''"></span>  
-                                                            
+                                                            <input type="file" class="sr-only" x-on:change="files = Object.values($event.target.files)" id="product-image" name="product-image">
+                                                            <span class="text-red-600" x-text="files ? files.map(file => file.name).join(', ') : ''"></span>
+
                                                         </label>
-                                                         
-                                                     
+
+
                                                     </div>
                                                     <p class="text-xs text-gray-500">
                                                         PNG, JPG, GIF up to 10MB
@@ -89,19 +89,9 @@
                             </form>
                         </div>
                     </div>
-                </div>
-
-              
- 
-
-
-
+                </div>  
             </div>
         </div>
     </div>
 </main>
-<script>
-
-    
-</script>
- 
+<?php require 'partials/footer.php'; ?>

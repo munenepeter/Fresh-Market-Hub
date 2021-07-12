@@ -38,7 +38,7 @@
                                                 <input type="text" name="quantity" id="quantity" class="mt-1 py-2 px-4  focus:ring-blue-500 focus:border-blue-500 block w-full shadow-md sm:text-sm border-gray-300 rounded-md" placeholder="How much of the product do you have?">
                                             </div>
 
-                                            
+
                                         </div>
                                         <div>
                                             <label for="product-decsription" class="block text-sm font-medium text-gray-700">
@@ -67,10 +67,10 @@
                                                         <label for="product-image" class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
                                                             <span>Upload a file</span>
                                                             <input type="file" class="sr-only" id="product-image" placeholder="Upload a file" name="product-image">
-                                                            
+
                                                         </label>
-                                                         
-                                                     
+
+
                                                     </div>
                                                     <p class="text-xs text-gray-500">
                                                         PNG, JPG, GIF up to 10MB
@@ -102,5 +102,4 @@
         </div>
     </div>
 </main>
-
- 
+<?php require 'partials/footer.php'; ?>

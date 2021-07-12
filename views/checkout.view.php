@@ -1,9 +1,8 @@
-
- 
-<?php 
+<?php
 require 'partials/head.php';
+
 use App\Core\Request;
- ?>
+?>
 
 
 
@@ -11,7 +10,7 @@ use App\Core\Request;
 <div class="grid md:grid-cols-2 md:gap-2">
     <div class="p-4">
         <div class="leading-loose">
-            <div class=" mx-auto bg-white shadow-lg rounded-lg  mx-2">
+            <div class="bg-white shadow-lg rounded-lg  mx-2">
                 <div class="md:flex ">
                     <div class="w-full p-4 px-5 py-5">
                         <div class="flex flex-row">
@@ -19,7 +18,7 @@ use App\Core\Request;
                             <h2 class="text-3xl font-semibold"> Market Hub</h2>
 
                         </div>
-                        <div class="flex flex-row pt-2 text-xs pt-6 pb-5">
+                        <div class="flex flex-row  text-xs pt-6 pb-5">
                             <span class="font-bold">Products</span>
                             <small class="text-gray-400 ml-1">></small>
 
@@ -41,25 +40,25 @@ use App\Core\Request;
                             <span>Shipping Address</span>
 
                             <div class="grid md:grid-cols-2 md:gap-2">
-  
+
                                 <input type="text" class="disabled:opacity-50 border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="First name*" value="<?= $_SESSION['name']; ?>" disabled>
 
-                                <input type="text" name="lastname" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Last name*" value="  <?=($user) ? $user['last_name'] : ''?>" required>
+                                <input type="text" name="lastname" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Last name*" value="  <?= ($user) ? $user['last_name'] : '' ?>" required>
                             </div>
 
-                            <input type="text" name="address" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Address*" value="  <?=($user) ? $user['address'] : ''?>" required>
+                            <input type="text" name="address" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Address*" value="  <?= ($user) ? $user['address'] : '' ?>" required>
 
-                            <input type="text" name="apartment" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Apartment, suite, etc. (optional)" value="  <?=($user) ? $user['apartment'] : ''?>" required>
+                            <input type="text" name="apartment" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Apartment, suite, etc. (optional)" value="  <?= ($user) ? $user['apartment'] : '' ?>" required>
 
                             <div class="grid md:grid-cols-2 md:gap-2">
 
-                                <input type="text" name="zipcode" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" value="  <?=($user) ? $user['zipcode'] : ''?>" placeholder="Zipcode*">
+                                <input type="text" name="zipcode" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" value="  <?= ($user) ? $user['zipcode'] : '' ?>" placeholder="Zipcode*">
 
-                                <input type="text" name="city" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="City*" value="  <?=($user) ? $user['city'] : ''?>" required>
+                                <input type="text" name="city" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="City*" value="  <?= ($user) ? $user['city'] : '' ?>" required>
 
                             </div>
 
-                            <input type="text" name="phonenumber" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Phone Number*" value="  <?=($user) ? $user['phoneno'] : ''?>" required>
+                            <input type="text" name="phonenumber" class="border rounded h-10 w-full focus:outline-none focus:border-green-200 px-2 mt-2 text-sm" placeholder="Phone Number*" value="  <?= ($user) ? $user['phoneno'] : '' ?>" required>
 
                             <input type="hidden" name="userid" class="hidden" value="<?= $_SESSION['id'] ?>">
 
@@ -131,10 +130,8 @@ use App\Core\Request;
 
             Request::getItemsInCart();
 
-            ?>  
+            ?>
             <div class="border border-t-2 border-gray-200 mt-2 mb-2 px-3"></div>
-
- 
             <div class="flex justify-between mb-4   px-3 py-2">
                 <div class=" mt-4 mb-8 px-3">
                     <p>Thank you for shopping with us</p>
@@ -142,15 +139,15 @@ use App\Core\Request;
                 </div>
                 <?php if ($user) : ?>
                     <form action="/email" method="POST">
-                    <div class="text-right font-medium">
-                         <button type="submit" class="h-12 w-24 rounded font-medium text-xs bg-blue-500 text-white">Accept</button>
-                    </div>
+                        <div class="text-right font-medium">
+                            <button type="submit" class="h-12 w-24 rounded font-medium text-xs bg-blue-500 text-white">Accept</button>
+                        </div>
                     </form>
                 <?php endif ?>
-            </div>  
+            </div>
             <div class="text-center text-green-400 text-sm px-3">
                 customercare@freshmarkethub.com | www.freshmarkethub.com
             </div>
         </div>
     </div>
-     
+    <?php require 'partials/footer.php'; ?>
