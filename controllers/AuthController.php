@@ -58,8 +58,9 @@ class AuthController {
         }
     }
     public function login() {
-
-        return viewAuth('login');
+         $msg = "";
+        return viewAuth('login', ['msg' => $msg]);
+       
     }
     public function loginstore() {
 

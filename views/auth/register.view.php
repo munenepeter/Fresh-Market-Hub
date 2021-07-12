@@ -68,7 +68,7 @@
                 </div>
                 <p class="flex  items-center justify-center mt-10 text-center text-md text-gray-500">
                     <span> Already have an Account? </span>
-                    <a href="/login" class="ml-2 text-indigo-500  hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300">Sign up</a>
+                    <a href="/log-in" class="ml-2 text-indigo-500  hover:text-indigo-500no-underline hover:underline cursor-pointer transition ease-in duration-300">Sign up</a>
                 </p>
             </form>
         </div>
