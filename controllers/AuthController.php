@@ -1,25 +1,33 @@
 <?php
 
 
- namespace App\Controllers;
- 
- use App\Core\App;
+namespace App\Controllers;
+
+use App\Core\App;
 
 class AuthController {
 
 
     public function register() {
-        $msg = '';
+
+        $msg = "";
+
         return viewAuth('register', ['msg' => $msg]);
     }
     public function registerstore() {
 
-        $password = md5($_POST['password']);
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $type = $_POST['type'];
 
-        if (App::get('database')->register($email) == 0) {
+        $password = md5(trim($_POST['password']));
+        $username = trim($_POST['username']);
+        $email = trim($_POST['email']);
+        $type = trim($_POST['type']);
+
+        if (empty($username) || empty($email) || empty($password) || empty($type)) {
+            $msg = "Please fill in all the fields";
+            return viewAuth('register', ['msg' => $msg]);
+        }
+
+        if (App::get('database')->register($email) === 0) {
 
             App::get('database')->insert('users', [
                 'username' => $username,
@@ -28,10 +36,8 @@ class AuthController {
                 'type' => $type
             ]);
 
-            $msg = "Successfull registered {$username}";
+            $loggedUser = array('type' => $type, 'username' => $username, 'email' => $email);
 
-            $loggedUser = array('type'=> $type, 'username'=>$username, 'email'=>$email);
-            
             session_start();
 
             $_SESSION['login'] = true;
@@ -42,7 +48,7 @@ class AuthController {
 
             header('location: products');
 
-            exit(); 
+            exit();
         } else {
 
             $msg = "Entered email already exists!";
@@ -52,9 +58,8 @@ class AuthController {
         }
     }
     public function login() {
-        $msg = '';
-        return viewAuth('login', ['msg' => $msg]);
-        exit();
+
+        return viewAuth('login');
     }
     public function loginstore() {
 
@@ -96,7 +101,7 @@ class AuthController {
         header('location: home');
         exit();
     }
-    
+
     public function logout() {
         $_SESSION['login'] = false;
         session_destroy();

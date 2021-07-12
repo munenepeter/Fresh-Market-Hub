@@ -30,10 +30,6 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
                         </svg>
                     </div>
-
-
-
-
                     <label class="text-sm font-bold text-<?= ($msg) ? 'red' : 'gray'; ?>-700 tracking-wide">Username</label>
                     <input name="username" class="w-full text-base py-2 border-b border-<?= ($msg) ? 'red' : 'gray'; ?>-300 focus:outline-none focus:border-<?= ($msg) ? 'red' : 'indigo'; ?>-500 placeholder-<?= ($msg) ? 'red' : 'gray'; ?>-500" type="text" placeholder="Username" required>
                 </div>
