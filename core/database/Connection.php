@@ -10,7 +10,7 @@ class Connection {
      * @return \PDO New PDO instance
      */
     public static function make($config) {
-
+        $_SESSION['error'] = false;
         try {
             return new \PDO(
                 $config['connection']. ';dbname=' . $config['name'],

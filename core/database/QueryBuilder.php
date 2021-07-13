@@ -13,7 +13,7 @@ class QueryBuilder {
   //Select everything and insert into a class
 
   public function selectAll(String $table, $intoClass) {
-     if(isset($_SESSION['error'])){
+     if($_SESSION['error'] === true){
        exit();
      }
     $statement = $this->pdo->prepare("select * from {$table}");
