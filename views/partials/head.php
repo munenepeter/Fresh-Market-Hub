@@ -19,7 +19,7 @@ use App\Core\Request;
 
   <!-- Online css files -->
   <title>
- <?= 'Fresh Market Hub | ' . Request::uri() ?>  </title>
+ <?= 'Fresh Market Hub | ' . ucfirst(Request::uri()) ?>  </title>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
   <style>
