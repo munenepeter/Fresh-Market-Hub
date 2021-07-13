@@ -2,8 +2,7 @@
 
 use App\Core\App;
 use App\Core\Database\Connection;
-use App\Core\Database\QueryBuilder;
-use App\Core\Exceptions\NOTFoundException;
+use App\Core\Database\QueryBuilder; 
 
 /**Require the App Class -> binder of the most important parts like the DB
  * Bind the config file(The database credentials)

@@ -13,9 +13,11 @@ class QueryBuilder {
   //Select everything and insert into a class
 
   public function selectAll(String $table, $intoClass) {
-
+     if(isset($_SESSION['error'])){
+       exit();
+     }
     $statement = $this->pdo->prepare("select * from {$table}");
-
+ 
     if (!$statement->execute()) {
 
       throw new \Exception("Something is up with your Select {$statement}!");
