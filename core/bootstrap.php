@@ -3,11 +3,13 @@
 use App\Core\App;
 use App\Core\Database\Connection;
 use App\Core\Database\QueryBuilder;
+use App\Core\Exceptions\NOTFoundException;
 
 /**Require the App Class -> binder of the most important parts like the DB
  * Bind the config file(The database credentials)
 */
 App::bind('config', require 'config.php');
+
 
 //session_start
 session_start();
@@ -15,7 +17,7 @@ session_start();
 /**
  *Bind the Database credentials and connect to the app
  *Bind the requred database file above to 
- *an instance of the connection
+ *an instance of the connections
 */
 
 App::bind('database', new QueryBuilder(
