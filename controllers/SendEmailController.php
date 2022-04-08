@@ -34,8 +34,8 @@ class SendEmailController {
         $mail->isSMTP();
         $mail->Host = 'smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Username = '1f5c2f65499919';
-        $mail->Password = '6436ff4e593028';
+        $mail->Username = '';
+        $mail->Password = '';
         $mail->SMTPSecure = 'tls';
         $mail->Port = 2525;
 
